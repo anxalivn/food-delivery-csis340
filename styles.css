@@ -3,7 +3,14 @@ body {
 }
 h1 {
     color: #C26356; 
-    font-size: 30px; 
+    font-size: 35px; 
+    font-family: Menlo, Monaco, fixed-width;
+    text-align: center;
+}
+
+h3 {
+    color:white; 
+    font-size: 16px; 
     font-family: Menlo, Monaco, fixed-width;
 }
 
@@ -11,3 +18,25 @@ p {
     color: white;
     font-family: "Source Code Pro", Menlo, Monaco, fixed-width;
 }
+
+.navigationbar {
+    background-color: grey;
+}
+
+.navigationbar a {
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    padding: 10px 40px 10px 40px;
+    font-size: 24px;
+  }
+  
+.navigationbar a:hover {
+    background-color:white;
+    color: black;
+}
+
+.navigationbar a.active {
+    background-color: #4CAF50;
+    color: purple;
+  }
