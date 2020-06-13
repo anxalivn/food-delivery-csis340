@@ -1,227 +1,43 @@
+<!DOCTYPE html>
 <html>
-<head>
-<script type="text/javascript" src="https://public.tableau.com/javascripts/api/tableau-2.0.0.min.js"></script>       
-  <script type="text/javascript">
-    var workbook,activesheet,viz;
-      
-    function initViz() {
-    var containerDiv = document.getElementById("vizContainer"),
-    url = "https://public.tableau.com/views/GanbaatarAssignment1/SalesbySub-Category?:display_count=y&publish=yes&:origin=viz_share_link";
-     var options = {
-    width: 600,
-    height: 600,
-    hideTabs: true,
-    hideToolbar: true,
-    onFirstInteractive: function () {
-      listenToMarksSelection();
-      workbook = viz.getWorkbook();
-      activeSheet = workbook.getActiveSheet();
-     }
-     };
-    viz = new tableau.Viz(containerDiv, url, options);
-      
-    }
-    function filterOnFurniture() {
-    activeSheet.applyFilterAsync(
-    "Category",
-    "Furniture",
-    tableau.FilterUpdateType.REPLACE);
-} 
-      function addValuesToFilter() {
-  activeSheet.applyFilterAsync(
-    "Category",
-    ["Technology", "Office Supplies"],
-    tableau.FilterUpdateType.ADD);
-}      
-      function removeValuesFromFilter() {
-  activeSheet.applyFilterAsync(
-    "Category",
-    "Technology",
-    tableau.FilterUpdateType.REMOVE);
-}   
-      function filterRangeOfValues() {
-  activeSheet = workbook.getActiveSheet();
-  activeSheet.applyRangeFilterAsync(
-    "Sales",
-    {
-      min: 500,
-      max: 100000
-    },
-    tableau.FilterUpdateType.REPLACE);
-}    
-      function clearFilters() {
-  activeSheet.clearFilterAsync("Category");
-  activeSheet.clearFilterAsync("Sales");
-}      
-      function switchToMapTab(sheetname) {
-  workbook.activateSheetAsync(sheetname);
-}
-       
-      function addValuesToSelection() {
-  workbook.getActiveSheet().selectMarksAsync(
-    "Country",
-    ["United States", "Mexico"],
-    tableau.FilterUpdateType.ADD);
-}  
-      function removeFromSelection() {
-  workbook.getActiveSheet().selectMarksAsync(
-    "SUM(Profit)",
-    {
-      min: 0
-    },
-    tableau.FilterUpdateType.REMOVE);
-}     
-      function switchTabsThenFilterThenSelectMarks() {
-  workbook.activateSheetAsync("Global Sales and Profits")
-    .then(function (newSheet) {
-      activeSheet = newSheet;
+  <head>
+    <title>Welcome to VIKC</title>
+    <link rel="stylesheet" href="style1.css"> <!--Styles-->
+    <meta name="viewpoint" content="width=device-width, initial-scale=1">
+  </head>
 
-      // It's important to return the promise so the next link in the chain
-      // won't be called until the filter completes.
-      return activeSheet.applyRangeFilterAsync(
-        "SUM(Sales)",
-        {
-          min: 50000,
-          
-        },
-        tableau.FilterUpdateType.REPLACE);
-    })
-    .then(function (filterFieldName) {
-      return activeSheet.selectMarksAsync(
-        "Country",
-    ["United States", "Mexico"],
-        tableau.SelectionUpdateType.REPLACE);
-    });
-}     
-      function querySheets() {
-  var sheets = workbook.getPublishedSheetsInfo();
-  var text = getSheetsAlertText(sheets);
-  text = "Sheets in the workbook:\n" + text;
-  alert(text);
-}    
-      function getSheetsAlertText(sheets) {
-  var alertText = [];
+  <body>
+    <!--Navigation Set-up-->
+    <div class="navTop">
+      <div class="navTopLef">
+        <a href="menu.html">Menu</a>
+        <a href="information.html">User</a>
+        <a href="checkout.html">Check Out</a>
+      </div>
+      <div class="navTopCenter">
+          <img class= "logo" src="Images/logo.png" alt="">
+      </div>
+      <div class="loginbtn">
+        <button type="submit" class="login-btn" onclick="window.location.href='login.html'">Login to Order</button>
+      </div>
 
-  for (var i = 0, len = sheets.length; i < len; i++) {
-    var sheet = sheets[i];
-    alertText.push("  Sheet " + i);
-    alertText.push(" (" + sheet.getSheetType() + ")");
-    alertText.push(" - " + sheet.getName());
-    alertText.push("\n");
-  }
-
-  return alertText.join("");
-}
-      function queryDashboard() {
-  workbook.activateSheetAsync("Dashboard 1")
-    .then(function (dashboard) {
-      var worksheets = dashboard.getWorksheets();
-      var text = getSheetsAlertText(worksheets);
-      text = "Worksheets in the dashboard:\n" + text;
-      alert(text);
-    });
-}  
-     function changeDashboardSize() {
-  workbook.activateSheetAsync("Dashboard 1")
-    .then(function (dashboard) {
-      dashboard.changeSizeAsync({
-        behavior: tableau.SheetSizeBehavior.AUTOMATIC
-      });
-    });
-}  
-       var dashboard, mapSheet, graphSheet;
-      function doSomeStuff(){
-  workbook.activateSheetAsync("Dashboard 1")
-    .then(function (sheet) {
-      dashboard = sheet;
-      mapSheet = dashboard.getWorksheets().get("Global Sales and Profits");
-      graphSheet = dashboard.getWorksheets().get("Sales by Sub-Category");
-      return mapSheet.applyFilterAsync("Country", "United States", tableau.FilterUpdateType.REPLACE);
-    })
-    .then(function () {
-      // Do these two steps in parallel since they work on different sheets.
-      mapSheet.applyFilterAsync("AVG(Sales)",{min:500,max: 10000000}, tableau.FilterUpdateType.REPLACE);
-      return graphSheet.applyFilterAsync("Category","Furniture", tableau.FilterUpdateType.REPLACE);
-    })
-    .then(function () {
-      return graphSheet.selectMarksAsync("Sub-Category (group)", "Tables", tableau.SelectionUpdateType.REPLACE);
-    });
-}      
-      
-    function exportPDF() {
-  viz.showExportPDFDialog();
-}    
-      function exportImage() {
-  viz.showExportImageDialog();
-}   
-      function exportCrossTab() {
-  viz.showExportCrossTabDialog();
-}  
-      function exportData() {
-  viz.showExportDataDialog();
-}    
-      function revertAll() {
-  workbook.revertAllAsync();
-}    
-       function listenToMarksSelection() {
-            viz.addEventListener(tableau.TableauEventName.MARKS_SELECTION, onMarksSelection);
-        }
-
-        function onMarksSelection(marksEvent) {
-            return marksEvent.getMarksAsync().then(reportSelectedMarks);
-        }
-
-        function reportSelectedMarks(marks) {
-            var html = "";
-
-            for (var markIndex = 0; markIndex < marks.length; markIndex++) {
-                var pairs = marks[markIndex].getPairs();
-                html += "<b>Details" + (markIndex + 1) + ":</b><ul>";
-
-                for (var pairIndex = 0; pairIndex < pairs.length; pairIndex++) {
-                    var pair = pairs[pairIndex];
-                    html += "<li><b>Dimension:</b> " + pair.fieldName;
-                    html += "<br/><b>Value:</b> " + pair.formattedValue + "</li>";
-                }
-
-                html += "</ul>";
-            }
-
-            var infoDiv = document.getElementById('markDetails');
-            infoDiv.innerHTML = html;
-        }
-      
-    </script>
+    </div>
+    <!--Picture Slider Container-->
+    <div id=slider>
+      <div class="cycle-slideshow">
+        <img src="Images/image1.jpg">
+        <img src="Images/image2.jpg">
+        <img src="Images/image3.jpg">
+        <img src="Images/image4.jpg">
+      </div>
+    </div>
     
-    
-    </head>
-      <body onload="initViz()" style="font: verdana;">
-          <input type="button" value="Furniture" onclick="filterOnFurniture()">
-          <input type="button" value="Add Tech and Office Supplies" onclick="addValuesToFilter()">
-          <input type="button" value="Remove Tech" onclick="removeValuesFromFilter()">
-          <input type="button" value="Clear Filters" onclick="clearFilters()"><br>
-          <input type="button" value="Map View" onclick="switchToMapTab('Global Sales and Profits')">
-          <input type="button" value="Dashboard view" onclick="switchToMapTab('Dashboard 1')">
-          <input type="button" value="Sales View" onclick="switchToMapTab('Sales by Sub-Category')"><br>
-          <input type="button" value="Select US & Mexico" 
-                 onclick="addValuesToSelection()">
-          <input type="button" value="Select Losses" 
-                 onclick="removeFromSelection()">
-           <input type="button" value="Chain example" onclick="switchTabsThenFilterThenSelectMarks()"><br>
-           <input type="button" value="Query Sheets" onclick="querySheets()">
-           <input type="button" value="Query Dashboard" onclick="queryDashboard()">
-           <input type="button" value="Resize Dashboard" onclick="changeDashboardSize()">
-           <input type="button" value="Do Some Stuff" onclick="doSomeStuff()"><br>
-           <input type="button" value="Export PDF" onclick="exportPDF()">
-           <input type="button" value="Export Image" onclick="exportImage()">
-           <input type="button" value="Export Cross Tab" onclick="exportCrossTab()">
-           <input type="button" value="Export Data" onclick="exportData()">
-           <input type="button" value="Revert All" onclick="revertAll()">
-          
-         
-          <div id="vizCointainer" style="position: absolute"> </div>
-          <div id="markDetails" style="float: right;"></div>
-          
-    </body>
+    <!-- Scripts and Plugin -->
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+
+    <!--This is a plugin form Mike Alsup - https://github.com/malsup/cycle2 -->
+    <script src="http://malsup.github.com/jquery.cycle2.js"></script>
+  </body>
 
 </html>
