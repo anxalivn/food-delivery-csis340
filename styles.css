@@ -36,7 +36,7 @@ p {
     color: black;
 }
 
-.navigationbar a.active {
-    background-color: #4CAF50;
+.navigationbar a:active {
+    background-color:white;
     color: purple;
   }
