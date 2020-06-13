@@ -51,7 +51,7 @@
   }
   
   .navTopCenter {
-    margin-right: 12%;
+    margin-left:25%;
   }
   
   .navTopCenterWL {
@@ -71,7 +71,7 @@
   #slider {
     position: fixed; 
   }
-
+  
   #slider img{
     max-width: 100%;
     max-height: 100%;
