@@ -1,6 +1,6 @@
 'user strict';
 
-var AWS = require('aws-sdk'),
+var AWS = require('aws-sdk');
   mydocumentClient = new AWS.DynamoDB.DocumentClient();
 
 exports.handler = function(event, context, callback){
