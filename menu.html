@@ -20,26 +20,41 @@
         <div class="navTopCenterInPage">
             <img class="logo" src="Images/logo.png" alt="">
         </div>
-        
+
     </div>
+    <style>
+        table, td, th {
+            border: 1px solid black;
+        }
+
+        table-responsive {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th {
+            height: 50px;
+        }
+    </style>
+
     <div class="container">
         <div class="table-responsive">
             <h1>Food Menu</h1>
             <br />
-            <table class="table-responsive table-bordered table-striped" id="foodMenu">
+            <table class="table-responsive" id="foodMenu">
                 <tr>
                     <th>Food Name</th>
-                    <th>Food Description</th> 
+                    <th>Food Description</th>
                     <th>Food Price</th>
                 </tr>
             </table>
         </div>
 
-        </div>
-   
-     
-   
-    
+    </div>
+
+
+
+
     <script src="userInforScript.js"></script>
     <script src="foodScript.js"></script>
 </body>
