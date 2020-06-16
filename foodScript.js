@@ -10,7 +10,7 @@ async function getData() {
 getData();
 
 $(document).ready(function () {
-    $.getJSON("response.json", function (foods) {
+    $.getJSON(api_foods_url, function (foods) {
         var foodData = '';
         $.each(foods, function (key, value) {
             foodData += '<tr>';
