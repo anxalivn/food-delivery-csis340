@@ -229,7 +229,7 @@ margin: 10px;
 }
 .hoverTable{
 	font-family: Arial, Helvetica, sans-serif;
-	width:75%; 
+	width:100%; 
 	border-collapse:collapse; 
 	overflow:hidden;
 	margin-left: auto;
@@ -239,9 +239,13 @@ margin: 10px;
         text-align: left;
 	}
 .hoverTable td{ 
-	padding:20px 0; border:#2A9D8F 1px solid;
+	c
+	padding:20px; border:#2A9D8F 1px solid;
 	}
-
+.hoverTable th{
+	padding:20x;
+	color: rgb(46, 212, 234);
+}
 .hoverTable tr{
 	background:rgb(128, 128, 128);
 	}
@@ -258,5 +262,5 @@ margin: 10px;
 img {
   width: 100px;
   height: 100px;
-  display: block
+  display: block;
 }
