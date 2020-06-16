@@ -247,3 +247,9 @@ margin: 10px;
 .hoverTable tr:hover {
         background-color: #264653;
 }
+.header {
+  padding: 60px;
+  text-align: center;
+  color: white;
+  font-size: 30px;
+}
