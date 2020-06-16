@@ -228,6 +228,7 @@ margin: 10px;
   width: calc(100% + 20px);
 }
 .hoverTable{
+	font-family: Arial, Helvetica, sans-serif;
 	width:75%; 
 	border-collapse:collapse; 
 	overflow:hidden;
@@ -238,7 +239,7 @@ margin: 10px;
         text-align: left;
 	}
 .hoverTable td{ 
-	padding:7px; border:#2A9D8F 1px solid;
+	padding:20px 0; border:#2A9D8F 1px solid;
 	}
 
 .hoverTable tr{
