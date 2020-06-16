@@ -280,6 +280,6 @@ div#content {
     right: -8px;
     background: var(--primaryColor);
     padding: 0 5px;
-    border-radius: 30%;
-    color: rgb(46, 212, 234);
+    border-radius: 50%;
+    color: #264653;
 }
