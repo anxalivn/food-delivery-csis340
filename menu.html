@@ -2,6 +2,9 @@
 <html>
 <head>
     <title>Welcome to VIKC</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="style1.css"> <!--Styles-->
     <meta name="viewpoint" content="width=device-width, initial-scale=1">
 </head>
@@ -19,22 +22,21 @@
         </div>
         
     </div>
-    <style>
-    th {
-        color:rgb(46, 212, 234) ;
-    }
-    </style>
+    <div class="container">
+        <div class="table-responsive">
+            <h1>Food Menu</h1>
+            <br />
+            <table class="table-responsive table-bordered table-striped" id="foodMenu">
+                <tr>
+                    <th>Food Name</th>
+                    <th>Food Description</th> 
+                    <th>Food Price</th>
+                </tr>
+            </table>
+        </div>
 
-    <table class="table table-striped">
-        <tr class="bg-info">
-            <th> Food </th>
-            <th> Food Description </th>
-            <th> Food Price </th>
-        </tr>
-
-        <tbody id="foodMenu"
-            </tbody>
-        </table>
+        </div>
+   
      
    
     
@@ -42,3 +44,18 @@
     <script src="foodScript.js"></script>
 </body>
 </html>
+<script>
+    $(document).ready(function(){
+        $.getJSON("response.json", function (foods) {
+            var foodData = '';
+            $.each(foods, function (key, value) {
+                foodData += '<tr>';
+                foodData += '<td>' + value.foodName + '</td>';
+                foodData += '<td>' + value.foodDescription + '</td>';
+                foodData += '<td>' + value.foodPrice + '</td>';
+                foodData += '</tr>';
+            });
+            $('#foodMenu').append(foodData);
+        });
+    });
+  </script>
