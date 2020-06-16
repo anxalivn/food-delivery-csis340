@@ -264,21 +264,3 @@ div#content {
 .img {
     display: block;
 }
-.nav-icon {
-    font-size: 1.5rem;
-}
-
-.cart-btn {
-    position: relative;
-    cursor: pointer;
-}
-
-.cart-items {
-    position: absolute;
-    top: -8px;
-    right: -8px;
-    background: var(--primaryColor);
-    padding: 0 5px;
-    border-radius: 30%;
-    color: var(--mainWhite);
-}
