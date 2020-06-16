@@ -231,12 +231,4 @@ margin: 10px;
   color: red;
   font-family: Roboto;
   font-size: 300%;
-
-}
-table {
-  border-collapse: collapse;
-}
-
-table, th, td {
-  border: 1px solid black;
 }
