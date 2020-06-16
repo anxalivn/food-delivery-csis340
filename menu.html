@@ -1,51 +1,49 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Food Menu</title>
-    <link rel="stylesheet" href="style1.css"> <!--Styles-->
+    <title>Welcome to VIKC</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="style1.css"> <!--Styles-->
     <meta name="viewpoint" content="width=device-width, initial-scale=1">
 </head>
 
 <body>
+    <!--Navigation Set-up-->
     <div class="navTop1">
-      <div class="navTopLef">
-        <a href="menu.html">Menu</a>
-        <a href="information.html">User</a>
-        <a href="checkout.html">Check Out</a>
-      </div>
-      <div class="navTopCenterInPage">
-          <img class= "logo" src="Images/logo.png" alt="">
-      </div>
-      <div class="loginbtn">
-        <button type="submit" class="login-btn" onclick="window.location.href='index.html'">Login Out</button>
-      </div>     
-    </div>
-    <div class="content">
-    <div class="header">
-        <h1>Food Menu</h1>
+        <div class="navTopLef">
+            <a href="menu.html">Menu</a>
+            <a href="information.html">User</a>
+            <a href="checkout.html">Check Out</a>
         </div>
-   
-        <div class="hoverTable">
-            
+        <div class="navTopCenterInPage">
+            <img class="logo" src="Images/logo.png" alt="">
+        </div>
 
-            <table class="hoverTable" id="foodMenu">
+    </div>
+   
+
+    <div class="container">
+        <div class="table">
+            <h1>Food Menu</h1>
+            <br />
+            <table class="hovertable" id="foodMenu">
                 <tr>
                     <th>Food Name</th>
                     <th>Food Description</th>
                     <th>Food Price</th>
+                    <th>Food Image </th> 
                 </tr>
             </table>
         </div>
-     </div>
-   
+
+    </div>
 
 
 
 
     <script src="userInforScript.js"></script>
     <script src="foodScript.js"></script>
-   
 </body>
 </html>
