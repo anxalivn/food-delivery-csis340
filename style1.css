@@ -266,6 +266,7 @@ div#content {
 }
 .nav-icon {
     font-size: 1.5rem;
+  
 }
 
 .cart-btn {
@@ -280,5 +281,5 @@ div#content {
     background: var(--primaryColor);
     padding: 0 5px;
     border-radius: 30%;
-    color: var(--mainWhite);
+    color: rgb(46, 212, 234);
 }
