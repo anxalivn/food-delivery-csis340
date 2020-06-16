@@ -228,7 +228,7 @@ margin: 10px;
   width: calc(100% + 20px);
 }
 .hoverTable{
-	width:75%; 
+	width:500px; 
 	border-collapse:collapse; 
 	overflow:hidden;
 	margin-left: auto;
@@ -239,7 +239,7 @@ margin: 10px;
 	}
 
 .hoverTable tr{
-	background:rgb(128, 128, 128);
+	background:rgb(46, 212, 234);
 	}
 	
 .hoverTable tr:hover {
