@@ -233,13 +233,15 @@ margin: 10px;
 	overflow:hidden;
 	margin-left: auto;
         margin-right: auto;
+	margin-top: auto;
+	margin-bottom: auto;
 	}
 .hoverTable td{ 
 	padding:7px; border:#2A9D8F 1px solid;
 	}
 
 .hoverTable tr{
-	background:rgb(46, 212, 234);
+	background:rgb(128, 128, 128);
 	}
 	
 .hoverTable tr:hover {
