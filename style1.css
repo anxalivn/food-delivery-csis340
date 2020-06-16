@@ -231,4 +231,19 @@ margin: 10px;
   color: red;
   font-family: Roboto;
   font-size: 300%;
+
+}
+.table {
+    width: 500px;
+    border-collapse:collapse;
+    overflow:hidden;
+    box-shadow:0 0 20px rgb(46, 212, 234)
+}
+.th, td {
+    padding:15px;
+    background-color:rgb(128, 128, 128)
+    currentColor:#fff;
+}
+.th{
+    text-align:center;
 }
