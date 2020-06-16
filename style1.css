@@ -228,7 +228,7 @@ margin: 10px;
   width: calc(100% + 20px);
 }
 .hoverTable{
-	width:500px; 
+	width:75%; 
 	border-collapse:collapse; 
 	overflow:hidden;
 	margin-left: auto;
@@ -253,4 +253,9 @@ margin: 10px;
   text-align: center;
   color: white;
   font-size: 30px;
+}
+img {
+  width: 100px;
+  height: 100px;
+  display: block
 }
