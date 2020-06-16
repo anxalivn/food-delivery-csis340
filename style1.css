@@ -235,6 +235,7 @@ margin: 10px;
         margin-right: auto;
 	margin-top: auto;
 	margin-bottom: auto;
+        text-align: left;
 	}
 .hoverTable td{ 
 	padding:7px; border:#2A9D8F 1px solid;
