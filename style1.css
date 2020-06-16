@@ -1,6 +1,6 @@
 
-* {
-    box-sizing: border-box;
+*{
+   box-sizing: border-box;
 }
 
 body {
@@ -251,8 +251,8 @@ div#content {
         background: rgb(128, 128, 128);
     }
 
-        .hoverTable tr:hover {
-            background-color: #264653;
+.hoverTable tr:hover {
+     background-color: #264653;
         }
 .header {
     padding: 60px;
