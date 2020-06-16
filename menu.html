@@ -1,30 +1,33 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Welcome to VIKC</title>
+    <title>Food Menu</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="style1.css"> <!--Styles-->
     <meta name="viewpoint" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
 </head>
 
 <body>
     <!--Navigation Set-up-->
-    <   <div class="navTop1">
-            <div class="navTopLef">
-                <a href="menu.html">Menu</a>
-                <a href="information.html">User</a>
-                <a href="checkout.html">Check Out</a>
-            </div>
-            <div class="navTopCenterInPage">
-                <img class= "logo" src="Images/logo.png" alt="">
-            </div>
-            <div class="loginbtn">
-                <button type="submit" class="login-btn" onclick="window.location.href='index.html'">Login Out</button>
-              </div>              
+    <div class="navTop1">
+        <div class="navTopLef">
+            <a href="menu.html">Menu</a>
+            <a href="information.html">User</a>
+            <a href="checkout.html">Check Out</a>
+        </div>
+        <div class="navTopCenterInPage">
+            <img class="logo" src="Images/logo.png" alt="">
+        </div>
+        <li class="cart">
+            <a href="cart.html">
+                <ion-icon name="basket"></ion-icon>Cart<span>0</span>
+            </a>
+        </li>
+
     </div>
-   
 
     <div class="content">
         
@@ -48,7 +51,9 @@
 
 
 
+      <script src="cart.js"></script>
     <script src="userInforScript.js"></script>
     <script src="foodScript.js"></script>
+    <script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>
 </body>
 </html>
