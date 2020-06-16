@@ -22,21 +22,7 @@
         </div>
 
     </div>
-    <style>
-        table, td, th {
-            border: 1px solid black;
-        }
-
-        table-responsive {
-            border-collapse: collapse;
-            width: 100%;
-        }
-
-        th {
-            height: 50px;
-        }
-    </style>
-
+  
     <div class="container">
         <div class="table-responsive">
             <h1>Food Menu</h1>
@@ -59,18 +45,3 @@
     <script src="foodScript.js"></script>
 </body>
 </html>
-<script>
-    $(document).ready(function(){
-        $.getJSON("response.json", function (foods) {
-            var foodData = '';
-            $.each(foods, function (key, value) {
-                foodData += '<tr>';
-                foodData += '<td>' + value.foodName + '</td>';
-                foodData += '<td>' + value.foodDescription + '</td>';
-                foodData += '<td>' + value.foodPrice + '</td>';
-                foodData += '</tr>';
-            });
-            $('#foodMenu').append(foodData);
-        });
-    });
-  </script>
