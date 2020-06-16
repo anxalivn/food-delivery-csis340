@@ -1,27 +1,27 @@
 <!DOCTYPE html>
+<html>
 <head>
-  <link rel="stylesheet" type="text/css" href="styles.css">
-<form action="action_page.php" method="post">
-  <div class="imgcontainer">
-    <img src="image.png" alt="Avatar" class="avatar">
-  </div>
+<title>Login Form</title>
 
-  <div class="container">
-    <label for="uname"><b>Username</b></label>
-    <input type="text" placeholder="Enter Username" name="uname" required>
+<link rel=“stylesheet” type=“text/css” href=“style.css”>
 
-    <label for="psw"><b>Password</b></label>
-    <input type="password" placeholder="Enter Password" name="psw" required>
+<body>
+	<div class=“loginbar”>
+	<img src=“logovick.png” class=“logovick”>
+		<h1>Login</h1>
+		<form>
+		<p>Username</p>
+		<input type=“text” name=“” placeholder=“Username”>
+		<p>Password</p>
+		<input type=“password” name=“” placeholder=“Password”>
+		<input type=“submit” name=“” value=“Submit”>
+		<a href=“#”>Forgot Password?</a><br>
+		<a href=“#”>Sign up</a><br>
+		
+		</form>
+	</div>
 
-    <button type="submit">Login</button>
-    <label>
-      <input type="checkbox" checked="checked" name="remember"> Remember me
-    </label>
-  </div>
 
-  <div class="container" style="background-color:#f1f1f1">
-    <button type="button" class="cancelbtn">Cancel</button>
-    <span class="psw">Forgot <a href="#">password?</a></span>
-  </div>
-</form>
+</body>
+</head>
 </html>
