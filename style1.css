@@ -230,15 +230,18 @@ margin: 10px;
 .hoverTable{
 	width:100%; 
 	border-collapse:collapse; 
+	overflow:hidden;
+	margin-left: auto;
+        margin-right: auto;
 	}
 .hoverTable td{ 
-	padding:7px; border:#4e95f4 1px solid;
+	padding:7px; border:#2A9D8F 1px solid;
 	}
 
 .hoverTable tr{
-	background: #b8d1f3;
+	background:rgb(128, 128, 128)
 	}
 	
 .hoverTable tr:hover {
-        background-color: #ffff99;
+        background-color: #264653;
 }
