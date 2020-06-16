@@ -21,33 +21,30 @@
         <div class="navTopCenterInPage">
             <img class="logo" src="Images/logo.png" alt="">
         </div>
-        <div class="loginbtn">
-                <button type="submit" class="login-btn" onclick="window.location.href='index.html'">Login Out</button>
-              </div>  
-        <li class="cart">
-            <a href="cart.html">
-                <ion-icon name="basket"></ion-icon>Cart<span>0</span>
-            </a>
-        </li>
+        <div class="cart-btn">
+            <span class="nav-icon">
+                <i class="fas fa-cart-plus"></i>
+
+            </span>
+            <div class="cart-items">0</div>
+        </div>
+             
 
     </div>
 
-    <div class="content">
-        
-        <div class="header">
+
+    <div class="container">
+        <div class="table">
             <h1>Food Menu</h1>
-            </div>
-            
-           <div class="hoverTable">
-            <table class="hoverTable" id="foodMenu">
+            <br />
+            <table class="hovertable" id="foodMenu">
                 <tr>
-                    <th> </th>
-                    <th>Description</th>
-                    <th>Price</th>
-                    <th> </th>
-                    <th> </th>
+                    <th>Food Name</th>
+                    <th>Food Description</th>
+                    <th>Food Price</th>
+                    <th>Food Image </th>
                 </tr>
-               
+            
             </table>
         </div>
 
@@ -55,10 +52,9 @@
 
 
 
-
-      <script src="cart.js"></script>
+    <script src="cart.js"></script>
     <script src="userInforScript.js"></script>
     <script src="foodScript.js"></script>
-    <script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>
+  
 </body>
 </html>
