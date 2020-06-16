@@ -227,4 +227,9 @@ margin: 10px;
   background-color: #403866;
   width: calc(100% + 20px);
 }
+.MenuTitle {
+  color: red;
+  font-family: Roboto;
+  font-size: 300%;
 
+}
