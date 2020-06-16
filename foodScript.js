@@ -17,6 +17,7 @@ $(document).ready(function () {
             foodData += '<td>' + value.foodName + '</td>';
             foodData += '<td>' + value.foodDescription + '</td>';
             foodData += '<td>' + value.foodPrice + '</td>';
+            foodData += '<img src="'value.foodImage +  />';
             foodData += '</tr>';
         });
         $('#foodMenu').append(foodData);
