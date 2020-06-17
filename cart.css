@@ -87,17 +87,4 @@
   text-transform: capitalize;
   margin-bottom: 1rem;
 }
-.bag-btn {
-  position: absolute;
-  top: 70%;
-  right: 0;
-  background: var(--primaryColor);
-  border: none;
-  text-transform: uppercase;
-  padding: 0.5rem 0.75rem;
-  letter-spacing: var(--mainSpacing);
-  font-weight: bold;
-  transition: var(--mainTransition);
-  transform: translateX(101%);
-  cursor: pointer;
-}
+
