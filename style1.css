@@ -263,8 +263,9 @@ div#content {
 
 .img {
     display: block;
-    position: relative;
-    overflow: hidden;
+     width: 100%;
+  min-height: 12rem;
+  transition: var(--mainTransition);
 }
 .nav-icon {
     font-size: 1.5rem;
@@ -283,12 +284,6 @@ div#content {
 }
 .img-container:hover .bag-btn {
   transform: translateX(0);
-}
-.product-img {
-  display: block;
-  width: 100%;
-  min-height: 12rem;
-  transition: var(--mainTransition);
 }
 .img-container {
   position: relative;
