@@ -262,9 +262,7 @@ div#content {
 }
 
 .img {
-    display: block;
-     width: 100%;
-  min-height: 12rem;
+  display: block;
   transition: var(--mainTransition);
 }
 .nav-icon {
