@@ -7,4 +7,28 @@ async function getData() {
   console.log(users);
 }
 
-getData();
+
+function validate(){
+  $(document).ready(function () {
+    $.getJSON(api_users_url, function (users) {
+      var valid = false;
+      var userinput = document.getElementById("username").value;
+      var passinput = document.getElementById("password").value;
+        $.each(users, function (key, value) {
+          console.log(value.userName);
+          console.log(value.userPasswordfm );
+          if ( userinput == value.userName && passinput == value.userPassword){
+            valid = true;
+          }
+        });
+        if (valid == true){
+          alert ("Login successfully");
+          window.location = "menu.html";
+          return false;
+        }
+        else{
+          alert("Login unsuccessfully");
+        }
+    });
+  });
+};

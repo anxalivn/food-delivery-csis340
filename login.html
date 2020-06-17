@@ -1,26 +1,28 @@
 <!DOCTYPE html>
 <html>
-<head>
-<title>Login Form</title>
+	<head>
+		<meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+		<meta content="utf-8" http-equiv="encoding">
+		<title>Login Form</title>
 
-<link rel="stylesheet" type = "text/css" href="styles.css">
-	
-</head>
-<body>
-	<div class="loginbar">
-	<img src="Images/logo.png" class="logo">
-		<h1>Login</h1>
-		<form>
-		<p>Username</p>
-		<input type="text" name="" placeholder="Username">
-		<p>Password</p>
-		<input type="password" name="" placeholder="Password">
-		<button type="submit">Login</button>
-		<a href="#">Forgot Password?</a><br>
-		<a href="#">Sign up</a><br>
-		
-		</form>
-	</div>
+		<link rel="stylesheet" type = "text/css" href="styles.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+		<script src="userInforScript.js"></script>
+	</head>
+	<body>
+		<div class="loginbar">
+			<h1>Login</h1>
+			<form id="account" method="post" name="loginForm">
+			<p>Username</p>
+			<input type="text" id="username" name="username" placeholder="Username">
+			<p>Password</p>
+			<input type="password" id="password" name="password" placeholder="Password">
+			<input type="button" value="Login" id="submit" onclick="validate()"/>
+			<a href="#">Forgot Password?</a><br>
+			<a href="#">Sign up</a><br>
+			
+			</form>
+		</div>
 
-</body>
+	</body>
 </html>
