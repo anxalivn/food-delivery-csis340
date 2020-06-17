@@ -12,9 +12,7 @@ getData();
 $(document).ready(function () {
     $.getJSON(api_foods_url, function (foods) {
         var foodData = '';
-        foods.sort(function(a, b) {
-        return parseFloat(a.foodDescription) - parseFloat(b.foodDescription);
-           });
+       
         $.each(foods, function (key, value) {
             foodData += '<tr>';
             foodData += '<td>' + value.foodName + '</td>';
