@@ -263,6 +263,8 @@ div#content {
 
 .img {
     display: block;
+    position: relative;
+    overflow: hidden;
 }
 .nav-icon {
     font-size: 1.5rem;
@@ -272,6 +274,28 @@ div#content {
 .cart-btn {
     position: relative;
     cursor: pointer;
+}
+.bag-btn:hover {
+  color: var(--mainWhite);
+}
+.fa-shopping-cart {
+  margin-right: 0.5rem;
+}
+.img-container:hover .bag-btn {
+  transform: translateX(0);
+}
+.product-img {
+  display: block;
+  width: 100%;
+  min-height: 12rem;
+  transition: var(--mainTransition);
+}
+.img-container {
+  position: relative;
+  overflow: hidden;
+}
+.img-container:hover .product-img {
+  opacity: 0.5;
 }
 
 .cart-items {
