@@ -25,7 +25,7 @@ $(document).ready(function () {
     });
 });
 function sortResults(prop, asc) {
-    people.sort(function(a, b) {
+    foods.sort(function(a, b) {
         if (asc) {
             return (a[prop] > b[prop]) ? 1 : ((a[prop] < b[prop]) ? -1 : 0);
         } else {
