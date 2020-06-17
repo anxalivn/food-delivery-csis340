@@ -12,6 +12,9 @@ getData();
 $(document).ready(function () {
     $.getJSON(api_foods_url, function (foods) {
         var foodData = '';
+        foods.sort(function(a, b) {
+        return parseFloat(a.foodDescription) - parseFloat(b.foodDescription);
+           });
         $.each(foods, function (key, value) {
             foodData += '<tr>';
             foodData += '<td>' + value.foodName + '</td>';
@@ -23,15 +26,3 @@ $(document).ready(function () {
         $('#foodMenu').append(foodData);
     });
 });
-function sortResults(prop, asc) {
-    foods.sort(function(a, b) {
-        if (asc) {
-            return (a[prop] > b[prop]) ? 1 : ((a[prop] < b[prop]) ? -1 : 0);
-        } else {
-            return (b[prop] > a[prop]) ? 1 : ((b[prop] < a[prop]) ? -1 : 0);
-        }
-    });
-    renderResults();
-}
-
-sortResults(prop,asc);
