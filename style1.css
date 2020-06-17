@@ -315,3 +315,6 @@ div#content {
   transform: translateX(101%);
   cursor: pointer;
 }
+.loginbar{
+   text-allign: left;
+}
