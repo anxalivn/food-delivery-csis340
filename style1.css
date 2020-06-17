@@ -289,7 +289,7 @@ div#content {
   position: relative;
   overflow: hidden;
 }
-.img-container:hover .product-img {
+.img-container:hover .img {
   opacity: 0.5;
 }
 
