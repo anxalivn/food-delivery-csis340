@@ -34,4 +34,4 @@ function sortResults(prop, asc) {
     renderResults();
 }
 
-
+sortResults(prop,asc);
