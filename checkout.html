@@ -4,6 +4,20 @@
     <title>Checkout Page</title>
     <link rel="stylesheet" href="style1.css"> <!--Styles-->
     <meta name="viewpoint" content="width=device-width, initial-scale=1">
+
+    <script>
+      function showCardInfo() {
+        if (document.getElementById('paymentOption').checked) {
+          document.getElementById('cardInformation').style.display='none';
+        }  else {
+          document.getElementById('cardInformation').style.display='block';
+        }
+
+
+      }
+
+
+    </script>
   </head>
 
   <body>
@@ -33,15 +47,20 @@
             
     <div class="userinformation">
       <h3>Customer Information</h3>
-    <input type="text" name="firstname" placeholder="Enter First Name">
-    <input type="text" name="lastname" placeholder="Enter Last Name">
+    <input type="text"name="name" placeholder="First Last">
     <input type="text"name="address" placeholder="Enter Address">
     <input type="text" name="city" placeholder="Enter City">
     <input type="text" name="state" placeholder="Enter State">
     <input type="text" name="zipcode" placeholder="Enter Zipcode">
 
+    <div class="option">
+      <h2> Pay with Cash or Card</h2>
+      <input type="checkbox" id="paymentOption" onclick="showCardInfo()">
+      <label for="paymentOption">Pay with cash upon arrival</label>
+    </div>
 
-    <div class="paymentinformation">
+
+    <div id="cardInformation">
       <h3>Payment Information</h3>
       <input type="text" name="cardname" placeholder="Enter Full Name on Card">
       <input type="text" name="cardnumber" placeholder="1111-2222-3333-4444">
@@ -73,11 +92,12 @@
       <input type="text" name="cvv" placeholder="CVV">
 
       <br>
-      <br>
-
-      <input type="submit" value="Submit Checkout">
+    
 
     </div>
+    <input type="text" name="note" placeholder="Any special instruction for delivery driver">
+    <br>
+    <input type="submit" value="Submit Checkout">
     </div>
               
           </div>
