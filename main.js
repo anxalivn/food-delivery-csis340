@@ -185,18 +185,18 @@ function deleteButtons() {
 onLoadCartNumbers();
 displayCart();
 
+function onLoadCartNumbers() {
+    let foodNumbers = localStorage.getItem('cartNumbers');
+    if (foodNumbers) {
+        document.querySelector('.cart span').textContent = foodNumbers;
+    }
+}
+
 for(let i=0; i< carts.length; i++) {
     carts[i].addEventListener('click', () => {
         cartNumbers(foods[i]);
         totalCost(foods[i]);
     });
-}
-
-function onLoadCartNumbers() {
-    let foodNumbers = localStorage.getItem('cartNumbers');
-    if( foodNumbers ) {
-        document.querySelector('.cart span').textContent = foodNumbers;
-    }
 }
 
 function cartNumbers(food, action) {
