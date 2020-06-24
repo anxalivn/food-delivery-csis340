@@ -1,7 +1,5 @@
 let carts = document.querySelectorAll('.add-cart');
 
-let carts = document.querySelectorAll('.add-cart');
-
 'user strict';
 
 const api_foods_url = 'https://sfxz3aprr7.execute-api.us-east-1.amazonaws.com/Finish1/getmenuinformation';
@@ -24,7 +22,7 @@ $(document).ready(function () {
             foodData += '<td>' + value.foodDescription + '</td>';
             foodData += '<td>' + value.foodPrice + '</td>';
             foodData += '< td > <img src= "Images/ ' + value.foodImage.toString() + ' "> ' + ' alt="" border=3 height = 100 width = 100 /> </td > ';
-            foodData += '<td>  < button class="bag-btn" data - id="1" > <i class="add-cart"></i>  add to bag </button > </td >';
+            foodData += '<td> <a class="add-cart" href="#">Add Cart</a> </td >';
             foodData += '</tr>';
             i += 1;
         });
