@@ -3,6 +3,7 @@
   <head>
     <title>Welcome to VIKC</title>
     <link rel="stylesheet" href="style1.css"> <!--Styles-->
+    <script src="session.js"></script>
     <meta name="viewpoint" content="width=device-width, initial-scale=1">
   </head>
 
@@ -24,33 +25,30 @@
     <div class="content">
         <div id="wrapper">
             <div id="content">
-                <h1><strong>Hi vydao,</strong></h2>
-                <h2>You are currenlty having: 0 Point</h2>
+                <h1><strong><div id="userInfo"></div></strong></h2>
+                <h2><div id="userPoint"></div></h2>
                 <div class ="inforpage">
                     <h2>Change Password</h3>
                     <label for="psw"><b>New Password</b></label>
-                    <input type="password" placeholder="Enter your new password"name="psw1" required>
+                    <input id="psw1" type="password" placeholder="Enter your new password"name="psw1" required>
                     <label for="psw"><b>Confirm Password</b></label>
-                    <input type="password" placeholder="Confirm you new password" name="psw2" required>
+                    <input id="psw2" type="password" placeholder="Confirm you new password" name="psw2" required>
 
                     <h2>Change Address</h3>
                     <label for="psw"><b>New Address</b></label></br>
-                    <p>Address: <input type="text" placeholder="Enter Adress"name="Address" required>
-                     City: <input type="text" placeholder="Enter City"name="City" required>
-                     State: <input type="text" placeholder="Enter State"name="State" required>
-                     Zipcode: <input type="text" placeholder="Enter Zipcode"name="Zipcode" required></p>
+                    <p>Address: <input id="newAddress"  type="text" placeholder="Enter Adress"name="Address" required>
+                     City: <input id="newCity" type="text" placeholder="Enter City"name="City" required>
+                     State: <input id="newState" type="text" placeholder="Enter State"name="State" required>
+                     Zipcode: <input id="newZipcode" type="text" placeholder="Enter Zipcode"name="Zipcode" required></p>
                     </br>
                 </div>
-                <button class="UserInformationPage-form-btn">
+                <button class="UserInformationPage-form-btn" onclick="getChange();">
                     <span>
-                        <i class="fa fa-paper-plane-o m-r-6" aria-hidden="true"></i>
                         <b>Send</b>
                     </span>
                 </button>
             </div>
         </div>
     </div>
-    <script src="userInforScript.js"></script>
-    <script src="foodScript.js"></script>
     </body>
 </html>

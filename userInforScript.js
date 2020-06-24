@@ -15,10 +15,10 @@ function validate(){
       var userinput = document.getElementById("username").value;
       var passinput = document.getElementById("password").value;
         $.each(users, function (key, value) {
-          console.log(value.userName);
-          console.log(value.userPasswordfm );
           if ( userinput == value.userName && passinput == value.userPassword){
             valid = true;
+            sessionStorage.setItem('username',value.userName)
+            sessionStorage.setItem('point',value.userPoint)
           }
         });
         if (valid == true){
