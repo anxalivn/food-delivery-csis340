@@ -24,7 +24,7 @@ $(document).ready(function () {
             foodData += '<td>' + value.foodDescription + '</td>';
             foodData += '<td>' + value.foodPrice + '</td>';
             foodData += '< td > <img src= "Images/ ' + value.foodImage.toString() + ' "> ' + ' alt="" border=3 height = 100 width = 100 /> </td > ';
-            foodData += '<td>  < button class="bag-btn" data - id="1" > <i class="add-cart cart' + i + '></i>  add to bag </button > </td >';
+            foodData += '<td>  < button class="bag-btn" data - id="1" > <i class="add-cart"></i>  add to bag </button > </td >';
             foodData += '</tr>';
             i += 1;
         });
