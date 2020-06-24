@@ -120,18 +120,18 @@ function displayCart() {
 
     if (cartItems && foodContainer) {
         foodContainer.innerHTML = '';
-        Object.values(cartItems).map((item, index) => {
+        Object.values(cartItems).map((key,  value) => {
             foodContainer.innerHTML +=
-                `<div class="food"><ion-icon foodName="close-circle"></ion-icon><img src= "Images/ ' + item.foodImage.toString() + ' ">
-                <span class="sm-hide">${item.foodName}</span>
+                `<div class="food"><ion-icon foodName="close-circle"></ion-icon><img src= "Images/ ' + value.foodImage.toString() + ' ">
+                <span class="sm-hide">${value.foodName}</span>
             </div>
-            <div class="foodPrice sm-hide">$${item.foodPrice},00</div>
+            <div class="foodPrice sm-hide">$${value.foodPrice},00</div>
             <div class="quantity">
                 <ion-icon class="decrease " foodName="arrow-dropleft-circle"></ion-icon>
-                    <span>${item.inCart}</span>
+                    <span>${value.inCart}</span>
                 <ion-icon class="increase" foodName="arrow-dropright-circle"></ion-icon>   
             </div>
-            <div class="total">$${item.inCart * item.foodPrice},00</div>`;
+            <div class="total">$${value.inCart * value.foodPrice},00</div>`;
         });
 
         foodContainer.innerHTML += `
@@ -256,7 +256,7 @@ function setItems(food) {
     cartItems = JSON.parse(cartItems);
 
     if(cartItems != null) {
-        let currentfood = food.foodImage;
+        let currentfood = food.foodImage; 
     
         if( cartItems[currentfood] == undefined ) {
             cartItems = {
@@ -304,18 +304,18 @@ function displayCart() {
     
     if( cartItems && foodContainer ) {
         foodContainer.innerHTML = '';
-        Object.values(cartItems).map( (item, index) => {
+        Object.values(cartItems).map( (key,  value) => {
             foodContainer.innerHTML += 
-            `<div class="food"><ion-icon foodName="close-circle"></ion-icon><img src= "Images/ ' + item.foodImage.toString() + ' ">
-                <span class="sm-hide">${item.foodName}</span>
+            `<div class="food"><ion-icon foodName="close-circle"></ion-icon><img src= "Images/ ' + value.foodImage.toString() + ' ">
+                <span class="sm-hide">${value.foodName}</span>
             </div>
-            <div class="foodPrice sm-hide">$${item.foodPrice},00</div>
+            <div class="foodPrice sm-hide">$${value.foodPrice},00</div>
             <div class="quantity">
                 <ion-icon class="decrease " foodName="arrow-dropleft-circle"></ion-icon>
-                    <span>${item.inCart}</span>
+                    <span>${value.inCart}</span>
                 <ion-icon class="increase" foodName="arrow-dropright-circle"></ion-icon>   
             </div>
-            <div class="total">$${item.inCart * item.foodPrice},00</div>`;
+            <div class="total">$${value.inCart * value.foodPrice},00</div>`;
         });
 
         foodContainer.innerHTML += `
@@ -521,18 +521,18 @@ function displayCart() {
 
     if (cartItems && foodContainer) {
         foodContainer.innerHTML = '';
-        Object.values(cartItems).map((item, index) => {
+        Object.values(cartItems).map((key,  value) => {
             foodContainer.innerHTML +=
-                `<div class="food"><ion-icon foodName="close-circle"></ion-icon><img src= "Images/ ' + item.foodImage.toString() + ' ">
-                <span class="sm-hide">${item.foodName}</span>
+                `<div class="food"><ion-icon foodName="close-circle"></ion-icon><img src= "Images/ ' + value.foodImage.toString() + ' ">
+                <span class="sm-hide">${value.foodName}</span>
             </div>
-            <div class="foodPrice sm-hide">$${item.foodPrice},00</div>
+            <div class="foodPrice sm-hide">$${value.foodPrice},00</div>
             <div class="quantity">
                 <ion-icon class="decrease " foodName="arrow-dropleft-circle"></ion-icon>
-                    <span>${item.inCart}</span>
+                    <span>${value.inCart}</span>
                 <ion-icon class="increase" foodName="arrow-dropright-circle"></ion-icon>   
             </div>
-            <div class="total">$${item.inCart * item.foodPrice},00</div>`;
+            <div class="total">$${value.inCart * value.foodPrice},00</div>`;
         });
 
         foodContainer.innerHTML += `
@@ -705,18 +705,18 @@ function displayCart() {
     
     if( cartItems && foodContainer ) {
         foodContainer.innerHTML = '';
-        Object.values(cartItems).map( (item, index) => {
+        Object.values(cartItems).map( (key,  value) => {
             foodContainer.innerHTML += 
-            `<div class="food"><ion-icon foodName="close-circle"></ion-icon><img src= "Images/ ' + item.foodImage.toString() + ' ">
-                <span class="sm-hide">${item.foodName}</span>
+            `<div class="food"><ion-icon foodName="close-circle"></ion-icon><img src= "Images/ ' + value.foodImage.toString() + ' ">
+                <span class="sm-hide">${value.foodName}</span>
             </div>
-            <div class="foodPrice sm-hide">$${item.foodPrice},00</div>
+            <div class="foodPrice sm-hide">$${value.foodPrice},00</div>
             <div class="quantity">
                 <ion-icon class="decrease " foodName="arrow-dropleft-circle"></ion-icon>
-                    <span>${item.inCart}</span>
+                    <span>${value.inCart}</span>
                 <ion-icon class="increase" foodName="arrow-dropright-circle"></ion-icon>   
             </div>
-            <div class="total">$${item.inCart * item.foodPrice},00</div>`;
+            <div class="total">$${value.inCart * value.foodPrice},00</div>`;
         });
 
         foodContainer.innerHTML += `
