@@ -1,137 +1,142 @@
 let carts = document.querySelectorAll('.add-cart');
 
-let products = [ 
-    {
-        name: "Pizza",
-        tag: "pizza",
-        price: 15,
-        inCart: 0
-    },
-    {
-        name: "Burger",
-        tag: "burger",
-        price: 20,
-        inCart: 0
-    },
-    {
-        name: "Salad",
-        tag: "salad",
-        price: 15,
-        inCart: 0
-    },
-    {
-        name: "fries",
-        tag: "fries",
-        price: 20,
-        inCart: 0
-    }
-];
+let carts = document.querySelectorAll('.add-cart');
 
-for(let i=0; i< carts.length; i++) {
+'user strict';
+
+const api_foods_url = 'https://sfxz3aprr7.execute-api.us-east-1.amazonaws.com/Finish1/getmenuinformation';
+async function getData() {
+    const response = await fetch(api_foods_url, { mode: 'cors' });
+    const foods = await response.json();
+    console.log(foods);
+}
+
+getData();
+
+$(document).ready(function () {
+    $.getJSON(api_foods_url, function (foods) {
+        var foodData = '';
+        i = 1;
+        $.each(foods, function (key, value) {
+            
+            foodData += '<tr>';
+            foodData += '<td>' + value.foodName + '</td>';
+            foodData += '<td>' + value.foodDescription + '</td>';
+            foodData += '<td>' + value.foodPrice + '</td>';
+            foodData += '< td > <img src= "Images/ ' + value.foodImage.toString() + ' "> ' + ' alt="" border=3 height = 100 width = 100 /> </td > ';
+            foodData += '<td>  < button class="bag-btn" data - id="1" > <i class="add-cart cart' + i + '></i>  add to bag </button > </td >';
+            foodData += '</tr>';
+            i += 1;
+        });
+        $('#foodMenu').append(foodData);
+    });
+});
+
+for (let i = 0; i < carts.length; i++) {
     carts[i].addEventListener('click', () => {
-        cartNumbers(products[i]);
-        totalCost(products[i]);
+        cartNumbers(foods[i]);
+        totalCost(foods[i]);
     });
 }
 
 function onLoadCartNumbers() {
-    let productNumbers = localStorage.getItem('cartNumbers');
-    if( productNumbers ) {
-        document.querySelector('.cart span').textContent = productNumbers;
+    let foodNumbers = localStorage.getItem('cartNumbers');
+    if (foodNumbers) {
+        document.querySelector('.cart span').textContent = foodNumbers;
     }
 }
 
-function cartNumbers(product, action) {
-    let productNumbers = localStorage.getItem('cartNumbers');
-    productNumbers = parseInt(productNumbers);
+function cartNumbers(food, action) {
+    let foodNumbers = localStorage.getItem('cartNumbers');
+    foodNumbers = parseInt(foodNumbers);
 
-    let cartItems = localStorage.getItem('productsInCart');
+    let cartItems = localStorage.getItem('foodsInCart');
     cartItems = JSON.parse(cartItems);
 
-    if( action ) {
-        localStorage.setItem("cartNumbers", productNumbers - 1);
-        document.querySelector('.cart span').textContent = productNumbers - 1;
+    if (action) {
+        localStorage.setItem("cartNumbers", foodNumbers - 1);
+        document.querySelector('.cart span').textContent = foodNumbers - 1;
         console.log("action running");
-    } else if( productNumbers ) {
-        localStorage.setItem("cartNumbers", productNumbers + 1);
-        document.querySelector('.cart span').textContent = productNumbers + 1;
+    } else if (foodNumbers) {
+        localStorage.setItem("cartNumbers", foodNumbers + 1);
+        document.querySelector('.cart span').textContent = foodNumbers + 1;
     } else {
         localStorage.setItem("cartNumbers", 1);
         document.querySelector('.cart span').textContent = 1;
     }
-    setItems(product);
+    setItems(food);
 }
 
-function setItems(product) {
-    // let productNumbers = localStorage.getItem('cartNumbers');
-    // productNumbers = parseInt(productNumbers);
-    let cartItems = localStorage.getItem('productsInCart');
+function setItems(food) {
+    // let foodNumbers = localStorage.getItem('cartNumbers');
+    // foodNumbers = parseInt(foodNumbers);
+    let cartItems = localStorage.getItem('foodsInCart');
     cartItems = JSON.parse(cartItems);
 
-    if(cartItems != null) {
-        let currentProduct = product.tag;
-    
-        if( cartItems[currentProduct] == undefined ) {
+    if (cartItems != null) {
+        let currentfood = food.foodImage;
+
+        if (cartItems[currentfood] == undefined) {
             cartItems = {
                 ...cartItems,
-                [currentProduct]: product
+                [currentfood]: food
             }
-        } 
-        cartItems[currentProduct].inCart += 1;
+        }
+        cartItems[currentfood].inCart += 1;
 
     } else {
-        product.inCart = 1;
-        cartItems = { 
-            [product.tag]: product
+        food.inCart = 1;
+        cartItems = {
+            [food.foodImage]: food
         };
     }
 
-    localStorage.setItem('productsInCart', JSON.stringify(cartItems));
+    localStorage.setItem('foodsInCart', JSON.stringify(cartItems));
 }
 
-function totalCost( product, action ) {
+function totalCost(food, action) {
     let cart = localStorage.getItem("totalCost");
 
-    if( action) {
+    if (action) {
         cart = parseInt(cart);
 
-        localStorage.setItem("totalCost", cart - product.price);
-    } else if(cart != null) {
-        
+        localStorage.setItem("totalCost", cart - food.foodPrice);
+    } else if (cart != null) {
+
         cart = parseInt(cart);
-        localStorage.setItem("totalCost", cart + product.price);
-    
+        localStorage.setItem("totalCost", cart + food.foodPrice);
+
     } else {
-        localStorage.setItem("totalCost", product.price);
+        localStorage.setItem("totalCost", food.foodPrice);
     }
 }
 
 function displayCart() {
-    let cartItems = localStorage.getItem('productsInCart');
+    let cartItems = localStorage.getItem('foodsInCart');
     cartItems = JSON.parse(cartItems);
 
     let cart = localStorage.getItem("totalCost");
     cart = parseInt(cart);
 
-    let productContainer = document.querySelector('.products');
-    
-    if( cartItems && productContainer ) {
-        productContainer.innerHTML = '';
-        Object.values(cartItems).map( (item, index) => {
-            productContainer.innerHTML += 
-            `<div class="product"><ion-icon name="close-circle"></ion-icon><img src="./images/${item.tag}.jpg" />
-                <span class="sm-hide">${item.name}</span>
+    let foodContainer = document.querySelector('.foods');
+
+    if (cartItems && foodContainer) {
+        foodContainer.innerHTML = '';
+        Object.values(cartItems).map((item, index) => {
+            foodContainer.innerHTML +=
+                `<div class="food"><ion-icon foodName="close-circle"></ion-icon><img src= "Images/ ' + item.foodImage.toString() + ' ">
+                <span class="sm-hide">${item.foodName}</span>
             </div>
-            <div class="price sm-hide">$${item.price},00</div>
+            <div class="foodPrice sm-hide">$${item.foodPrice},00</div>
             <div class="quantity">
-                <ion-icon class="decrease " name="arrow-dropleft-circle"></ion-icon>
+                <ion-icon class="decrease " foodName="arrow-dropleft-circle"></ion-icon>
                     <span>${item.inCart}</span>
-                <ion-icon class="increase" name="arrow-dropright-circle"></ion-icon>   
+                <ion-icon class="increase" foodName="arrow-dropright-circle"></ion-icon>   
             </div>
-            <div class="total">$${item.inCart * item.price},00</div>`;
+            <div class="total">$${item.inCart * item.foodPrice},00</div>`;
         });
 
-        productContainer.innerHTML += `
+        foodContainer.innerHTML += `
             <div class="basketTotalContainer">
                 <h4 class="basketTotalTitle">Basket Total</h4>
                 <h4 class="basketTotal">$${cart},00</h4>
@@ -146,23 +151,23 @@ function manageQuantity() {
     let decreaseButtons = document.querySelectorAll('.decrease');
     let increaseButtons = document.querySelectorAll('.increase');
     let currentQuantity = 0;
-    let currentProduct = '';
-    let cartItems = localStorage.getItem('productsInCart');
+    let currentfood = '';
+    let cartItems = localStorage.getItem('foodsInCart');
     cartItems = JSON.parse(cartItems);
 
-    for(let i=0; i < increaseButtons.length; i++) {
+    for (let i = 0; i < increaseButtons.length; i++) {
         decreaseButtons[i].addEventListener('click', () => {
             console.log(cartItems);
             currentQuantity = decreaseButtons[i].parentElement.querySelector('span').textContent;
             console.log(currentQuantity);
-            currentProduct = decreaseButtons[i].parentElement.previousElementSibling.previousElementSibling.querySelector('span').textContent.toLocaleLowerCase().replace(/ /g,'').trim();
-            console.log(currentProduct);
+            currentfood = decreaseButtons[i].parentElement.previousElementSibling.previousElementSibling.querySelector('span').textContent.toLocaleLowerCase().replace(/ /g, '').trim();
+            console.log(currentfood);
 
-            if( cartItems[currentProduct].inCart > 1 ) {
-                cartItems[currentProduct].inCart -= 1;
-                cartNumbers(cartItems[currentProduct], "decrease");
-                totalCost(cartItems[currentProduct], "decrease");
-                localStorage.setItem('productsInCart', JSON.stringify(cartItems));
+            if (cartItems[currentfood].inCart > 1) {
+                cartItems[currentfood].inCart -= 1;
+                cartNumbers(cartItems[currentfood], "decrease");
+                totalCost(cartItems[currentfood], "decrease");
+                localStorage.setItem('foodsInCart', JSON.stringify(cartItems));
                 displayCart();
             }
         });
@@ -171,36 +176,621 @@ function manageQuantity() {
             console.log(cartItems);
             currentQuantity = increaseButtons[i].parentElement.querySelector('span').textContent;
             console.log(currentQuantity);
-            currentProduct = increaseButtons[i].parentElement.previousElementSibling.previousElementSibling.querySelector('span').textContent.toLocaleLowerCase().replace(/ /g,'').trim();
-            console.log(currentProduct);
+            currentfood = increaseButtons[i].parentElement.previousElementSibling.previousElementSibling.querySelector('span').textContent.toLocaleLowerCase().replace(/ /g, '').trim();
+            console.log(currentfood);
 
-            cartItems[currentProduct].inCart += 1;
-            cartNumbers(cartItems[currentProduct]);
-            totalCost(cartItems[currentProduct]);
-            localStorage.setItem('productsInCart', JSON.stringify(cartItems));
+            cartItems[currentfood].inCart += 1;
+            cartNumbers(cartItems[currentfood]);
+            totalCost(cartItems[currentfood]);
+            localStorage.setItem('foodsInCart', JSON.stringify(cartItems));
             displayCart();
         });
     }
 }
 
 function deleteButtons() {
-    let deleteButtons = document.querySelectorAll('.product ion-icon');
-    let productNumbers = localStorage.getItem('cartNumbers');
+    let deleteButtons = document.querySelectorAll('.food ion-icon');
+    let foodNumbers = localStorage.getItem('cartNumbers');
     let cartCost = localStorage.getItem("totalCost");
-    let cartItems = localStorage.getItem('productsInCart');
+    let cartItems = localStorage.getItem('foodsInCart');
     cartItems = JSON.parse(cartItems);
-    let productName;
+    let foodName;
+    console.log(cartItems);
+
+    for (let i = 0; i < deleteButtons.length; i++) {
+        deleteButtons[i].addEventListener('click', () => {
+            foodName = deleteButtons[i].parentElement.textContent.toLocaleLowerCase().replace(/ /g, '').trim();
+
+            localStorage.setItem('cartNumbers', foodNumbers - cartItems[foodName].inCart);
+            localStorage.setItem('totalCost', cartCost - (cartItems[foodName].foodPrice * cartItems[foodName].inCart));
+
+            delete cartItems[foodName];
+            localStorage.setItem('foodsInCart', JSON.stringify(cartItems));
+
+            displayCart();
+            onLoadCartNumbers();
+        })
+    }
+}
+
+onLoadCartNumbers();
+displayCart();
+
+for(let i=0; i< carts.length; i++) {
+    carts[i].addEventListener('click', () => {
+        cartNumbers(foods[i]);
+        totalCost(foods[i]);
+    });
+}
+
+function onLoadCartNumbers() {
+    let foodNumbers = localStorage.getItem('cartNumbers');
+    if( foodNumbers ) {
+        document.querySelector('.cart span').textContent = foodNumbers;
+    }
+}
+
+function cartNumbers(food, action) {
+    let foodNumbers = localStorage.getItem('cartNumbers');
+    foodNumbers = parseInt(foodNumbers);
+
+    let cartItems = localStorage.getItem('foodsInCart');
+    cartItems = JSON.parse(cartItems);
+
+    if( action ) {
+        localStorage.setItem("cartNumbers", foodNumbers - 1);
+        document.querySelector('.cart span').textContent = foodNumbers - 1;
+        console.log("action running");
+    } else if( foodNumbers ) {
+        localStorage.setItem("cartNumbers", foodNumbers + 1);
+        document.querySelector('.cart span').textContent = foodNumbers + 1;
+    } else {
+        localStorage.setItem("cartNumbers", 1);
+        document.querySelector('.cart span').textContent = 1;
+    }
+    setItems(food);
+}
+
+function setItems(food) {
+    // let foodNumbers = localStorage.getItem('cartNumbers');
+    // foodNumbers = parseInt(foodNumbers);
+    let cartItems = localStorage.getItem('foodsInCart');
+    cartItems = JSON.parse(cartItems);
+
+    if(cartItems != null) {
+        let currentfood = food.foodImage;
+    
+        if( cartItems[currentfood] == undefined ) {
+            cartItems = {
+                ...cartItems,
+                [currentfood]: food
+            }
+        } 
+        cartItems[currentfood].inCart += 1;
+
+    } else {
+        food.inCart = 1;
+        cartItems = { 
+            [food.foodImage]: food
+        };
+    }
+
+    localStorage.setItem('foodsInCart', JSON.stringify(cartItems));
+}
+
+function totalCost( food, action ) {
+    let cart = localStorage.getItem("totalCost");
+
+    if( action) {
+        cart = parseInt(cart);
+
+        localStorage.setItem("totalCost", cart - food.foodPrice);
+    } else if(cart != null) {
+        
+        cart = parseInt(cart);
+        localStorage.setItem("totalCost", cart + food.foodPrice);
+    
+    } else {
+        localStorage.setItem("totalCost", food.foodPrice);
+    }
+}
+
+function displayCart() {
+    let cartItems = localStorage.getItem('foodsInCart');
+    cartItems = JSON.parse(cartItems);
+
+    let cart = localStorage.getItem("totalCost");
+    cart = parseInt(cart);
+
+    let foodContainer = document.querySelector('.foods');
+    
+    if( cartItems && foodContainer ) {
+        foodContainer.innerHTML = '';
+        Object.values(cartItems).map( (item, index) => {
+            foodContainer.innerHTML += 
+            `<div class="food"><ion-icon foodName="close-circle"></ion-icon><img src= "Images/ ' + item.foodImage.toString() + ' ">
+                <span class="sm-hide">${item.foodName}</span>
+            </div>
+            <div class="foodPrice sm-hide">$${item.foodPrice},00</div>
+            <div class="quantity">
+                <ion-icon class="decrease " foodName="arrow-dropleft-circle"></ion-icon>
+                    <span>${item.inCart}</span>
+                <ion-icon class="increase" foodName="arrow-dropright-circle"></ion-icon>   
+            </div>
+            <div class="total">$${item.inCart * item.foodPrice},00</div>`;
+        });
+
+        foodContainer.innerHTML += `
+            <div class="basketTotalContainer">
+                <h4 class="basketTotalTitle">Basket Total</h4>
+                <h4 class="basketTotal">$${cart},00</h4>
+            </div>`
+
+        deleteButtons();
+        manageQuantity();
+    }
+}
+
+function manageQuantity() {
+    let decreaseButtons = document.querySelectorAll('.decrease');
+    let increaseButtons = document.querySelectorAll('.increase');
+    let currentQuantity = 0;
+    let currentfood = '';
+    let cartItems = localStorage.getItem('foodsInCart');
+    cartItems = JSON.parse(cartItems);
+
+    for(let i=0; i < increaseButtons.length; i++) {
+        decreaseButtons[i].addEventListener('click', () => {
+            console.log(cartItems);
+            currentQuantity = decreaseButtons[i].parentElement.querySelector('span').textContent;
+            console.log(currentQuantity);
+            currentfood = decreaseButtons[i].parentElement.previousElementSibling.previousElementSibling.querySelector('span').textContent.toLocaleLowerCase().replace(/ /g,'').trim();
+            console.log(currentfood);
+
+            if( cartItems[currentfood].inCart > 1 ) {
+                cartItems[currentfood].inCart -= 1;
+                cartNumbers(cartItems[currentfood], "decrease");
+                totalCost(cartItems[currentfood], "decrease");
+                localStorage.setItem('foodsInCart', JSON.stringify(cartItems));
+                displayCart();
+            }
+        });
+
+        increaseButtons[i].addEventListener('click', () => {
+            console.log(cartItems);
+            currentQuantity = increaseButtons[i].parentElement.querySelector('span').textContent;
+            console.log(currentQuantity);
+            currentfood = increaseButtons[i].parentElement.previousElementSibling.previousElementSibling.querySelector('span').textContent.toLocaleLowerCase().replace(/ /g,'').trim();
+            console.log(currentfood);
+
+            cartItems[currentfood].inCart += 1;
+            cartNumbers(cartItems[currentfood]);
+            totalCost(cartItems[currentfood]);
+            localStorage.setItem('foodsInCart', JSON.stringify(cartItems));
+            displayCart();
+        });
+    }
+}
+
+function deleteButtons() {
+    let deleteButtons = document.querySelectorAll('.food ion-icon');
+    let foodNumbers = localStorage.getItem('cartNumbers');
+    let cartCost = localStorage.getItem("totalCost");
+    let cartItems = localStorage.getItem('foodsInCart');
+    cartItems = JSON.parse(cartItems);
+    let foodName;
     console.log(cartItems);
 
     for(let i=0; i < deleteButtons.length; i++) {
         deleteButtons[i].addEventListener('click', () => {
-            productName = deleteButtons[i].parentElement.textContent.toLocaleLowerCase().replace(/ /g,'').trim();
+            foodName = deleteButtons[i].parentElement.textContent.toLocaleLowerCase().replace(/ /g,'').trim();
            
-            localStorage.setItem('cartNumbers', productNumbers - cartItems[productName].inCart);
-            localStorage.setItem('totalCost', cartCost - ( cartItems[productName].price * cartItems[productName].inCart));
+            localStorage.setItem('cartNumbers', foodNumbers - cartItems[foodName].inCart);
+            localStorage.setItem('totalCost', cartCost - ( cartItems[foodName].foodPrice * cartItems[foodName].inCart));
 
-            delete cartItems[productName];
-            localStorage.setItem('productsInCart', JSON.stringify(cartItems));
+            delete cartItems[foodName];
+            localStorage.setItem('foodsInCart', JSON.stringify(cartItems));
+
+            displayCart();
+            onLoadCartNumbers();
+        })
+    }
+}
+
+onLoadCartNumbers();
+displayCart();
+let carts = document.querySelectorAll('.add-cart');
+
+let carts = document.querySelectorAll('.add-cart');
+
+'user strict';
+
+const api_foods_url = 'https://sfxz3aprr7.execute-api.us-east-1.amazonaws.com/Finish1/getmenuinformation';
+async function getData() {
+    const response = await fetch(api_foods_url, { mode: 'cors' });
+    const foods = await response.json();
+    console.log(foods);
+}
+
+getData();
+
+$(document).ready(function () {
+    $.getJSON(api_foods_url, function (foods) {
+        var foodData = '';
+        i = 1;
+        $.each(foods, function (key, value) {
+            
+            foodData += '<tr>';
+            foodData += '<td>' + value.foodName + '</td>';
+            foodData += '<td>' + value.foodDescription + '</td>';
+            foodData += '<td>' + value.foodPrice + '</td>';
+            foodData += '< td > <img src= "Images/ ' + value.foodImage.toString() + ' "> ' + ' alt="" border=3 height = 100 width = 100 /> </td > ';
+            foodData += '<td>  < button class="bag-btn" data - id="1" > <i class="add-cart cart' + i + '></i>  add to bag </button > </td >';
+            foodData += '</tr>';
+            i += 1;
+        });
+        $('#foodMenu').append(foodData);
+    });
+});
+
+for (let i = 0; i < carts.length; i++) {
+    carts[i].addEventListener('click', () => {
+        cartNumbers(foods[i]);
+        totalCost(foods[i]);
+    });
+}
+
+function onLoadCartNumbers() {
+    let foodNumbers = localStorage.getItem('cartNumbers');
+    if (foodNumbers) {
+        document.querySelector('.cart span').textContent = foodNumbers;
+    }
+}
+
+function cartNumbers(food, action) {
+    let foodNumbers = localStorage.getItem('cartNumbers');
+    foodNumbers = parseInt(foodNumbers);
+
+    let cartItems = localStorage.getItem('foodsInCart');
+    cartItems = JSON.parse(cartItems);
+
+    if (action) {
+        localStorage.setItem("cartNumbers", foodNumbers - 1);
+        document.querySelector('.cart span').textContent = foodNumbers - 1;
+        console.log("action running");
+    } else if (foodNumbers) {
+        localStorage.setItem("cartNumbers", foodNumbers + 1);
+        document.querySelector('.cart span').textContent = foodNumbers + 1;
+    } else {
+        localStorage.setItem("cartNumbers", 1);
+        document.querySelector('.cart span').textContent = 1;
+    }
+    setItems(food);
+}
+
+function setItems(food) {
+    // let foodNumbers = localStorage.getItem('cartNumbers');
+    // foodNumbers = parseInt(foodNumbers);
+    let cartItems = localStorage.getItem('foodsInCart');
+    cartItems = JSON.parse(cartItems);
+
+    if (cartItems != null) {
+        let currentfood = food.foodImage;
+
+        if (cartItems[currentfood] == undefined) {
+            cartItems = {
+                ...cartItems,
+                [currentfood]: food
+            }
+        }
+        cartItems[currentfood].inCart += 1;
+
+    } else {
+        food.inCart = 1;
+        cartItems = {
+            [food.foodImage]: food
+        };
+    }
+
+    localStorage.setItem('foodsInCart', JSON.stringify(cartItems));
+}
+
+function totalCost(food, action) {
+    let cart = localStorage.getItem("totalCost");
+
+    if (action) {
+        cart = parseInt(cart);
+
+        localStorage.setItem("totalCost", cart - food.foodPrice);
+    } else if (cart != null) {
+
+        cart = parseInt(cart);
+        localStorage.setItem("totalCost", cart + food.foodPrice);
+
+    } else {
+        localStorage.setItem("totalCost", food.foodPrice);
+    }
+}
+
+function displayCart() {
+    let cartItems = localStorage.getItem('foodsInCart');
+    cartItems = JSON.parse(cartItems);
+
+    let cart = localStorage.getItem("totalCost");
+    cart = parseInt(cart);
+
+    let foodContainer = document.querySelector('.foods');
+
+    if (cartItems && foodContainer) {
+        foodContainer.innerHTML = '';
+        Object.values(cartItems).map((item, index) => {
+            foodContainer.innerHTML +=
+                `<div class="food"><ion-icon foodName="close-circle"></ion-icon><img src= "Images/ ' + item.foodImage.toString() + ' ">
+                <span class="sm-hide">${item.foodName}</span>
+            </div>
+            <div class="foodPrice sm-hide">$${item.foodPrice},00</div>
+            <div class="quantity">
+                <ion-icon class="decrease " foodName="arrow-dropleft-circle"></ion-icon>
+                    <span>${item.inCart}</span>
+                <ion-icon class="increase" foodName="arrow-dropright-circle"></ion-icon>   
+            </div>
+            <div class="total">$${item.inCart * item.foodPrice},00</div>`;
+        });
+
+        foodContainer.innerHTML += `
+            <div class="basketTotalContainer">
+                <h4 class="basketTotalTitle">Basket Total</h4>
+                <h4 class="basketTotal">$${cart},00</h4>
+            </div>`
+
+        deleteButtons();
+        manageQuantity();
+    }
+}
+
+function manageQuantity() {
+    let decreaseButtons = document.querySelectorAll('.decrease');
+    let increaseButtons = document.querySelectorAll('.increase');
+    let currentQuantity = 0;
+    let currentfood = '';
+    let cartItems = localStorage.getItem('foodsInCart');
+    cartItems = JSON.parse(cartItems);
+
+    for (let i = 0; i < increaseButtons.length; i++) {
+        decreaseButtons[i].addEventListener('click', () => {
+            console.log(cartItems);
+            currentQuantity = decreaseButtons[i].parentElement.querySelector('span').textContent;
+            console.log(currentQuantity);
+            currentfood = decreaseButtons[i].parentElement.previousElementSibling.previousElementSibling.querySelector('span').textContent.toLocaleLowerCase().replace(/ /g, '').trim();
+            console.log(currentfood);
+
+            if (cartItems[currentfood].inCart > 1) {
+                cartItems[currentfood].inCart -= 1;
+                cartNumbers(cartItems[currentfood], "decrease");
+                totalCost(cartItems[currentfood], "decrease");
+                localStorage.setItem('foodsInCart', JSON.stringify(cartItems));
+                displayCart();
+            }
+        });
+
+        increaseButtons[i].addEventListener('click', () => {
+            console.log(cartItems);
+            currentQuantity = increaseButtons[i].parentElement.querySelector('span').textContent;
+            console.log(currentQuantity);
+            currentfood = increaseButtons[i].parentElement.previousElementSibling.previousElementSibling.querySelector('span').textContent.toLocaleLowerCase().replace(/ /g, '').trim();
+            console.log(currentfood);
+
+            cartItems[currentfood].inCart += 1;
+            cartNumbers(cartItems[currentfood]);
+            totalCost(cartItems[currentfood]);
+            localStorage.setItem('foodsInCart', JSON.stringify(cartItems));
+            displayCart();
+        });
+    }
+}
+
+function deleteButtons() {
+    let deleteButtons = document.querySelectorAll('.food ion-icon');
+    let foodNumbers = localStorage.getItem('cartNumbers');
+    let cartCost = localStorage.getItem("totalCost");
+    let cartItems = localStorage.getItem('foodsInCart');
+    cartItems = JSON.parse(cartItems);
+    let foodName;
+    console.log(cartItems);
+
+    for (let i = 0; i < deleteButtons.length; i++) {
+        deleteButtons[i].addEventListener('click', () => {
+            foodName = deleteButtons[i].parentElement.textContent.toLocaleLowerCase().replace(/ /g, '').trim();
+
+            localStorage.setItem('cartNumbers', foodNumbers - cartItems[foodName].inCart);
+            localStorage.setItem('totalCost', cartCost - (cartItems[foodName].foodPrice * cartItems[foodName].inCart));
+
+            delete cartItems[foodName];
+            localStorage.setItem('foodsInCart', JSON.stringify(cartItems));
+
+            displayCart();
+            onLoadCartNumbers();
+        })
+    }
+}
+
+onLoadCartNumbers();
+displayCart();
+
+for(let i=0; i< carts.length; i++) {
+    carts[i].addEventListener('click', () => {
+        cartNumbers(foods[i]);
+        totalCost(foods[i]);
+    });
+}
+
+function onLoadCartNumbers() {
+    let foodNumbers = localStorage.getItem('cartNumbers');
+    if( foodNumbers ) {
+        document.querySelector('.cart span').textContent = foodNumbers;
+    }
+}
+
+function cartNumbers(food, action) {
+    let foodNumbers = localStorage.getItem('cartNumbers');
+    foodNumbers = parseInt(foodNumbers);
+
+    let cartItems = localStorage.getItem('foodsInCart');
+    cartItems = JSON.parse(cartItems);
+
+    if( action ) {
+        localStorage.setItem("cartNumbers", foodNumbers - 1);
+        document.querySelector('.cart span').textContent = foodNumbers - 1;
+        console.log("action running");
+    } else if( foodNumbers ) {
+        localStorage.setItem("cartNumbers", foodNumbers + 1);
+        document.querySelector('.cart span').textContent = foodNumbers + 1;
+    } else {
+        localStorage.setItem("cartNumbers", 1);
+        document.querySelector('.cart span').textContent = 1;
+    }
+    setItems(food);
+}
+
+function setItems(food) {
+    // let foodNumbers = localStorage.getItem('cartNumbers');
+    // foodNumbers = parseInt(foodNumbers);
+    let cartItems = localStorage.getItem('foodsInCart');
+    cartItems = JSON.parse(cartItems);
+
+    if(cartItems != null) {
+        let currentfood = food.foodImage;
+    
+        if( cartItems[currentfood] == undefined ) {
+            cartItems = {
+                ...cartItems,
+                [currentfood]: food
+            }
+        } 
+        cartItems[currentfood].inCart += 1;
+
+    } else {
+        food.inCart = 1;
+        cartItems = { 
+            [food.foodImage]: food
+        };
+    }
+
+    localStorage.setItem('foodsInCart', JSON.stringify(cartItems));
+}
+
+function totalCost( food, action ) {
+    let cart = localStorage.getItem("totalCost");
+
+    if( action) {
+        cart = parseInt(cart);
+
+        localStorage.setItem("totalCost", cart - food.foodPrice);
+    } else if(cart != null) {
+        
+        cart = parseInt(cart);
+        localStorage.setItem("totalCost", cart + food.foodPrice);
+    
+    } else {
+        localStorage.setItem("totalCost", food.foodPrice);
+    }
+}
+
+function displayCart() {
+    let cartItems = localStorage.getItem('foodsInCart');
+    cartItems = JSON.parse(cartItems);
+
+    let cart = localStorage.getItem("totalCost");
+    cart = parseInt(cart);
+
+    let foodContainer = document.querySelector('.foods');
+    
+    if( cartItems && foodContainer ) {
+        foodContainer.innerHTML = '';
+        Object.values(cartItems).map( (item, index) => {
+            foodContainer.innerHTML += 
+            `<div class="food"><ion-icon foodName="close-circle"></ion-icon><img src= "Images/ ' + item.foodImage.toString() + ' ">
+                <span class="sm-hide">${item.foodName}</span>
+            </div>
+            <div class="foodPrice sm-hide">$${item.foodPrice},00</div>
+            <div class="quantity">
+                <ion-icon class="decrease " foodName="arrow-dropleft-circle"></ion-icon>
+                    <span>${item.inCart}</span>
+                <ion-icon class="increase" foodName="arrow-dropright-circle"></ion-icon>   
+            </div>
+            <div class="total">$${item.inCart * item.foodPrice},00</div>`;
+        });
+
+        foodContainer.innerHTML += `
+            <div class="basketTotalContainer">
+                <h4 class="basketTotalTitle">Basket Total</h4>
+                <h4 class="basketTotal">$${cart},00</h4>
+            </div>`
+
+        deleteButtons();
+        manageQuantity();
+    }
+}
+
+function manageQuantity() {
+    let decreaseButtons = document.querySelectorAll('.decrease');
+    let increaseButtons = document.querySelectorAll('.increase');
+    let currentQuantity = 0;
+    let currentfood = '';
+    let cartItems = localStorage.getItem('foodsInCart');
+    cartItems = JSON.parse(cartItems);
+
+    for(let i=0; i < increaseButtons.length; i++) {
+        decreaseButtons[i].addEventListener('click', () => {
+            console.log(cartItems);
+            currentQuantity = decreaseButtons[i].parentElement.querySelector('span').textContent;
+            console.log(currentQuantity);
+            currentfood = decreaseButtons[i].parentElement.previousElementSibling.previousElementSibling.querySelector('span').textContent.toLocaleLowerCase().replace(/ /g,'').trim();
+            console.log(currentfood);
+
+            if( cartItems[currentfood].inCart > 1 ) {
+                cartItems[currentfood].inCart -= 1;
+                cartNumbers(cartItems[currentfood], "decrease");
+                totalCost(cartItems[currentfood], "decrease");
+                localStorage.setItem('foodsInCart', JSON.stringify(cartItems));
+                displayCart();
+            }
+        });
+
+        increaseButtons[i].addEventListener('click', () => {
+            console.log(cartItems);
+            currentQuantity = increaseButtons[i].parentElement.querySelector('span').textContent;
+            console.log(currentQuantity);
+            currentfood = increaseButtons[i].parentElement.previousElementSibling.previousElementSibling.querySelector('span').textContent.toLocaleLowerCase().replace(/ /g,'').trim();
+            console.log(currentfood);
+
+            cartItems[currentfood].inCart += 1;
+            cartNumbers(cartItems[currentfood]);
+            totalCost(cartItems[currentfood]);
+            localStorage.setItem('foodsInCart', JSON.stringify(cartItems));
+            displayCart();
+        });
+    }
+}
+
+function deleteButtons() {
+    let deleteButtons = document.querySelectorAll('.food ion-icon');
+    let foodNumbers = localStorage.getItem('cartNumbers');
+    let cartCost = localStorage.getItem("totalCost");
+    let cartItems = localStorage.getItem('foodsInCart');
+    cartItems = JSON.parse(cartItems);
+    let foodName;
+    console.log(cartItems);
+
+    for(let i=0; i < deleteButtons.length; i++) {
+        deleteButtons[i].addEventListener('click', () => {
+            foodName = deleteButtons[i].parentElement.textContent.toLocaleLowerCase().replace(/ /g,'').trim();
+           
+            localStorage.setItem('cartNumbers', foodNumbers - cartItems[foodName].inCart);
+            localStorage.setItem('totalCost', cartCost - ( cartItems[foodName].foodPrice * cartItems[foodName].inCart));
+
+            delete cartItems[foodName];
+            localStorage.setItem('foodsInCart', JSON.stringify(cartItems));
 
             displayCart();
             onLoadCartNumbers();
