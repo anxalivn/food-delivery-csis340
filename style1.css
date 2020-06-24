@@ -272,12 +272,6 @@ div#content {
     font-size: 1.5rem;
 }
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Roboto', sans-serif;
-}
 
 header {
     background-image: url('images/cover.jpg');
@@ -342,8 +336,6 @@ li a {
     cursor: pointer;
     text-decoration: none;
 }
-
-.container,
 .container-foods {
     display: flex;
     justify-content: center;
