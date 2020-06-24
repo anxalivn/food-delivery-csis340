@@ -383,13 +383,13 @@ div#content {
     
 }
 
-.foods {
+.foodz {
     width: 100%;
     display: flex;
     flex-wrap: wrap;
 }
 
-.foods img {
+.foodz img {
     width: 75px;
 }
 
@@ -419,7 +419,7 @@ div#content {
         display: none;
     }
 
-    .foods,
+    .foodz,
     .food-header {
         justify-content: center;
     }
