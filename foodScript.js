@@ -12,14 +12,14 @@ getData();
 $(document).ready(function () {
     $.getJSON(api_foods_url, function (foods) {
         var foodData = '';
-       
         $.each(foods, function (key, value) {
+            
             foodData += '<tr>';
             foodData += '<td>' + value.foodName + '</td>';
             foodData += '<td>' + value.foodDescription + '</td>';
             foodData += '<td>' + value.foodPrice + '</td>';
-             foodData += '<td> <div class="img-container"> <img src="Images/' + value.foodImage + ' "alt="" border=3 height=100 width=100 class="img" /> <button class="bag-btn" data-id="1"> <i class="fas fa-shopping-cart"></i>+</button></div></td>';
-            foodData += '</tr>';
+            foodData += '< td > <img src= "Images/ ' + value.foodImage.toString() + ' "> ' + ' alt="" border=3 height = 100 width = 100 /> </td > ';
+            foodData += '<td> <a class="add-cart cart1" href="#">Add Cart</a> </td >';
         });
         $('#foodMenu').append(foodData);
     });
