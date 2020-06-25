@@ -44,7 +44,7 @@ body {
 }
 
 
-    .navTopLef a {
+.navTopLef a {
         text-decoration: none;
         text-transform: uppercase;
         width: 107px;
@@ -58,13 +58,13 @@ body {
         display: inline-block;
         text-align: center;
         transition: all .2s;
-    }
+}
 
-        .navTopLef a:hover,
-        .navTopLef a:focus {
-            background-color: rgba(44, 45, 47, 0);
-            border-color: rgb(234, 46, 73);
-        }
+.navTopLef a:hover,
+.navTopLef a:focus {
+ background-color: rgba(44, 45, 47, 0);
+border-color: rgb(234, 46, 73);
+}
 
 .navTopCenter {
     margin-left: 25%;
@@ -336,7 +336,10 @@ div#content {
 }
 
 .food-title {
-    width: 45%;
+    width: 35%;
+    border-bottom: 1px solid lightgray;
+    display: flex;
+    align-items: center;
 }
 
 .foodPrice {
