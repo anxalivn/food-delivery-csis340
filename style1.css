@@ -271,18 +271,7 @@ div#content {
 .nav-icon {
     font-size: 1.5rem;
 }
-.cart ion-icon {
-   vertical-align: bottom;
-   font-size: 20px;
-   padding-right: 5px;
-}
 
-.cart a {
-    background-color: royalblue;
-    color: #fff;
-    cursor: pointer;
-    text-decoration: none;
-}
 .container-foods {
     display: flex;
     justify-content: center;
@@ -392,13 +381,13 @@ div#content {
     
 }
 
-.foodz {
+.food{
     width: 100%;
     display: flex;
     flex-wrap: wrap;
 }
 
-.foodz img {
+.food img {
     width: 75px;
 }
 
@@ -428,7 +417,7 @@ div#content {
         display: none;
     }
 
-    .foodz,
+    .food,
     .food-header {
         justify-content: center;
     }
