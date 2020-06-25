@@ -1,42 +1,15 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link href="https://unpkg.com/ionicons@4.5.10-0/dist/css/ionicons.min.css" rel="stylesheet">
-    <script type="module" src="https://unpkg.com/ionicons@5.0.0/dist/ionicons/ionicons.esm.js"></script>
-    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style1.css" />
-    <script>
-        'user strict';
-
-const api_foods_url = 'https://sfxz3aprr7.execute-api.us-east-1.amazonaws.com/Finish1/getmenuinformation';
-async function getData() {
-    const response = await fetch(api_foods_url, { mode: 'cors' });
-    const foods = await response.json();
-    console.log(foods);
-}
-
-getData();
-
-$(document).ready(function () {
-    $.getJSON(api_foods_url, function (foods) {
-        var foodData = '';
-        $.each(foods, function (key, value) {
-            
-            foodData += '<tr>';
-            foodData += '<td>' + value.foodName + '</td>';
-            foodData += '<td>' + value.foodDescription + '</td>';
-            foodData += '<td>' + value.foodPrice + '</td>';
-            foodData += '<td> <div class="img-container"> <img src="Images/' + value.foodImage + ' "alt="" border=3 height=100 width=100 class="img" /> <a class="add-cart cart1" href="#">Add Cart</a> </div></td>';
-            foodData += '</tr>';
-        });
-        $('#foodMenu').append(foodData);
-    });
-});
-    </script>
     <title>Menu</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
+    <link href="https://unpkg.com/ionicons@4.5.10-0/dist/css/ionicons.min.css" rel="stylesheet">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@5.0.0/dist/ionicons/ionicons.esm.js"></script>
+    <link rel="stylesheet" href="style1.css"> <!--Styles-->
+    <meta name="viewpoint" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
 </head>
 
 <body>
@@ -46,9 +19,10 @@ $(document).ready(function () {
             <a href="menu.html">Menu</a>
             <a href="information.html">User</a>
             <a href="checkout.html">Check Out</a>
-                <a href="cart.html">
-                    <ion-icon name="basket"></ion-icon>Cart<span>0</span>
-                </a>
+            <li class="cart">
+                    <a href="cart.html">
+                        <ion-icon name="basket"></ion-icon>Cart<span>0</span>
+                    </a>
         </div>
         <div class="navTopCenterInPage">
             <img class="logo" src="Images/logo.png" alt="">
@@ -61,19 +35,20 @@ $(document).ready(function () {
             <h1>Food Menu</h1>
         </div>
         <div class="container">
-            <div class="hoverTable">
-                <table class="hoverTable" id="foodMenu">
-                    <tr>
-                        <th>Food Name</th>
-                        <th>Food Description</th>
-                        <th>Food Price</th>
-                        <th>Food Image </th>
-                    </tr>
+        <div class="hoverTable">
+            <table class="hoverTable" id="foodMenu">
+                <tr>
+                    <th>Food Name</th>
+                    <th>Food Description</th>
+                    <th>Food Price</th>
+                    <th>Food Image </th>         
+                </tr>
 
-                </table>
-            </div>
+            </table>
         </div>
+      </div>
     </div>
     <script src="main.js"></script>
+    <script src="foodScript.js"></script>
 </body>
 </html>
