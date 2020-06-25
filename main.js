@@ -1,4 +1,4 @@
-let carts = document.querySelectorAll('.add-cart');
+let carts = document.querySelectorAll('a.add-cart');
 
 for(let i=0; i< carts.length; i++) {
     carts[i].addEventListener('click', () => {
