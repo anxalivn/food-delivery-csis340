@@ -346,7 +346,7 @@ div#content {
     width: 45%;
 }
 
-.price {
+.foodPrice {
     width: 15%;
     border-bottom: 1px solid lightgray;
     display: flex;
