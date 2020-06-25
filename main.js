@@ -161,7 +161,6 @@ function deleteButtons() {
     let foodNumbers = localStorage.getItem('cartNumbers');
     let cartCost = localStorage.getItem("totalCost");
     let cartItems = localStorage.getItem('foodsInCart');
-    let cartItems = localStorage.getItem('foodsInCart');
     cartItems = JSON.parse(cartItems);
     let foodName;
     console.log(cartItems);
