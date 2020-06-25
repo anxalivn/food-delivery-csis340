@@ -323,8 +323,17 @@ div#content {
 .container-foods {
     max-width: 650px;
     justify-content: space-around;
-    margin: 0 auto;
-    margin-top: 50px;
+    width: 100px;
+	height: 100px;
+	background-color: red;
+	
+	position: absolute;
+	top:0;
+	bottom: 0;
+	left: 0;
+	right: 10;
+  	
+	margin: auto;
 }
 
 .container-foods ion-icon {
