@@ -289,13 +289,8 @@ div#content {
     overflow: hidden;
 }
 
-.fa-shopping-cart{
-    position: absolute;
-    width: 100%;
-    transition: all 0.3s ease-in-out;
-    opacity: 0;
-    cursor: pointer;
-    text-align: center;
+.fa-shopping-cart {
+  margin-right: 0.5rem;
 }
 
 .image:hover .cart1,
