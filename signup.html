@@ -1,1 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+		<meta content="utf-8" http-equiv="encoding">
+		<title>SignUp</title>
+
+		<link rel="stylesheet" type = "text/css" href="styles.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+		<script src="userInforScript.js"></script>
+	</head>
+	<body>
+		<div class="signbar">
+			<h1>Sign Up</h1>
+      
+			<form id="account" method="post" name="SignUp">
+        
+			<p>Username</p>
+			<input type="text" id="username" name="username" placeholder="Username">
+        
+			<p>Password</p>
+			<input type="password" id="password" name="password" placeholder="Password">
+        
+      <p>Address</p>
+			<input type="text" id="address" name="address" placeholder="Address">
+        
+      <p>City</p>
+			<input type="text" id="city" name="city" placeholder="City">
+        
+      <p>State</p>
+			<input type="text" id="state" name="state" placeholder="State">
+        
+      <p>ZipCode</p>
+			<input type="number" id="zip" name="zip" placeholder="ZipCode">
+        
+			<input type="button" value="SignUp" id="submit" onclick="validate()"/>
+			<a href="#">Forgot Password?</a><br>
+			<a href="#">Sign up</a><br>
+			
+			</form>
+		</div>
+
+	</body>
+</html>
 
