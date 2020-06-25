@@ -1,6 +1,19 @@
 let carts = document.querySelectorAll('.add-cart');
 
 
+
+'user strict';
+
+const api_foods_url = 'https://sfxz3aprr7.execute-api.us-east-1.amazonaws.com/Finish1/getmenuinformation';
+async function getData() {
+    const response = await fetch(api_foods_url, { mode: 'cors' });
+    const foods = await response.json();
+    console.log(foods);
+}
+
+getData();
+
+
 for (let i = 0; i < carts.length; i++) {
     carts[i].addEventListener('click', () => {
         cartNumbers(foods[i]);
@@ -43,7 +56,7 @@ function setItems(food) {
     cartItems = JSON.parse(cartItems);
 
     if (cartItems != null) {
-        let currentfood = food.foodImage;
+        let currentfood = food.foodName;
 
         if (cartItems[currentfood] == undefined) {
             cartItems = {
@@ -56,7 +69,7 @@ function setItems(food) {
     } else {
         food.inCart = 1;
         cartItems = {
-            [food.foodImage]: food
+            [food.foodName]: food
         };
     }
 
@@ -91,18 +104,18 @@ function displayCart() {
 
     if (cartItems && foodContainer) {
         foodContainer.innerHTML = '';
-        Object.values(cartItems).map((key,  value) => {
+        Object.values(cartItems).map((item, index) => {
             foodContainer.innerHTML +=
-                `<div class="food"><ion-icon foodName="close-circle"></ion-icon><img src= "Images/ ' + value.foodImage.toString() + ' ">
-                <span class="sm-hide">${value.foodName}</span>
+                `<div class="food"><ion-icon foodName="close-circle"></ion-icon><img src= "Images/ ' + item.foodImage.toString() + ' ">
+                <span class="sm-hide">${item.foodName}</span>
             </div>
-            <div class="foodPrice sm-hide">$${value.foodPrice},00</div>
+            <div class="foodPrice sm-hide">$${item.foodPrice},00</div>
             <div class="quantity">
                 <ion-icon class="decrease " foodName="arrow-dropleft-circle"></ion-icon>
-                    <span>${value.inCart}</span>
+                    <span>${item.inCart}</span>
                 <ion-icon class="increase" foodName="arrow-dropright-circle"></ion-icon>   
             </div>
-            <div class="total">$${value.inCart * value.foodPrice},00</div>`;
+            <div class="total">$${item.inCart * item.foodPrice},00</div>`;
         });
 
         foodContainer.innerHTML += `
@@ -185,18 +198,18 @@ function deleteButtons() {
 onLoadCartNumbers();
 displayCart();
 
-function onLoadCartNumbers() {
-    let foodNumbers = localStorage.getItem('cartNumbers');
-    if (foodNumbers) {
-        document.querySelector('.cart span').textContent = foodNumbers;
-    }
-}
-
 for(let i=0; i< carts.length; i++) {
     carts[i].addEventListener('click', () => {
         cartNumbers(foods[i]);
         totalCost(foods[i]);
     });
+}
+
+function onLoadCartNumbers() {
+    let foodNumbers = localStorage.getItem('cartNumbers');
+    if( foodNumbers ) {
+        document.querySelector('.cart span').textContent = foodNumbers;
+    }
 }
 
 function cartNumbers(food, action) {
@@ -227,7 +240,7 @@ function setItems(food) {
     cartItems = JSON.parse(cartItems);
 
     if(cartItems != null) {
-        let currentfood = food.foodImage; 
+        let currentfood = food.foodImage;
     
         if( cartItems[currentfood] == undefined ) {
             cartItems = {
@@ -275,18 +288,18 @@ function displayCart() {
     
     if( cartItems && foodContainer ) {
         foodContainer.innerHTML = '';
-        Object.values(cartItems).map( (key,  value) => {
+        Object.values(cartItems).map( (item, index) => {
             foodContainer.innerHTML += 
-            `<div class="food"><ion-icon foodName="close-circle"></ion-icon><img src= "Images/ ' + value.foodImage.toString() + ' ">
-                <span class="sm-hide">${value.foodName}</span>
+            `<div class="food"><ion-icon foodName="close-circle"></ion-icon><img src= "Images/ ' + item.foodImage.toString() + ' ">
+                <span class="sm-hide">${item.foodName}</span>
             </div>
-            <div class="foodPrice sm-hide">$${value.foodPrice},00</div>
+            <div class="foodPrice sm-hide">$${item.foodPrice},00</div>
             <div class="quantity">
                 <ion-icon class="decrease " foodName="arrow-dropleft-circle"></ion-icon>
-                    <span>${value.inCart}</span>
+                    <span>${item.inCart}</span>
                 <ion-icon class="increase" foodName="arrow-dropright-circle"></ion-icon>   
             </div>
-            <div class="total">$${value.inCart * value.foodPrice},00</div>`;
+            <div class="total">$${item.inCart * item.foodPrice},00</div>`;
         });
 
         foodContainer.innerHTML += `
