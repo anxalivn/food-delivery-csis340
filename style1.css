@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css?family=Lato:400,700");
+
 * {
     box-sizing: border-box;
     margin: 0;
@@ -103,7 +104,7 @@ img.logo {
 
 .login-btn {
     background-color: #ea2e49;
-    width: 250;
+    width: 50px;
     height: 50px;
     border-radius: 30px;
     text-decoration: none;
@@ -268,6 +269,7 @@ div#content {
 .img {
     display: block;
 }
+
 .nav-icon {
     font-size: 1.5rem;
 }
@@ -313,25 +315,23 @@ div#content {
     max-width: 650px;
     justify-content: space-around;
     width: 100px;
-	height: 100px;
-	background-color: red;
-	
-	position: absolute;
-	top:0;
-	bottom: 0;
-	left: 0;
-	right: 10;
-  	
-	margin: auto;
+    height: 100px;
+    background-color: red;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 10px;
+    margin: auto;
 }
 
-.container-foods ion-icon {
-    font-size: 25px;
-    color: blue;
-    margin-left: 10px;
-    margin-right: 10px;
-    cursor: pointer;
-}
+    .container-foods ion-icon {
+        font-size: 25px;
+        color: blue;
+        margin-left: 10px;
+        margin-right: 10px;
+        cursor: pointer;
+    }
 
 .food-header {
     width: 100%;
@@ -376,20 +376,19 @@ div#content {
     border-bottom: 1px solid lightgray;
 }
 
-.food ion-icon {
-    cursor: pointer;
-    
-}
+    .food ion-icon {
+        cursor: pointer;
+    }
 
-.food{
+.food {
     width: 100%;
     display: flex;
     flex-wrap: wrap;
 }
 
-.food img {
-    width: 75px;
-}
+    .food img {
+        width: 75px;
+    }
 
 .basketTotalContainer {
     display: flex;
