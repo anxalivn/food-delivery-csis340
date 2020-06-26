@@ -1,9 +1,31 @@
-let carts = document.querySelectorAll('a.add-cart');
+var foods;
+    $(document).ready(function () {
+    $.getJSON('https://sfxz3aprr7.execute-api.us-east-1.amazonaws.com/Finish1/getmenuinformation', function (foods) {
+        var foodData = '';
+        var x =0;
+        $.each(foods, function (key, value) {
+            
+            foodData += '<tr>';
+            foodData += '<td>' + value.foodName + '</td>';
+            foodData += '<td>' + value.foodDescription + '</td>';
+            foodData += '<td>' + value.foodPrice + '</td>';
+            foodData += '<td> <div class="img-container"> <img src="Images/' + value.foodImage + ' "alt="" border=3 height=100 width=100 class="img" /> <a id="id_1" value='+x+' class="fa fa-shopping-cart" href = "#"   ></a> </div></td>';
+            foodData += '</tr>';
+            x++;
+        });
+        $('#foodMenu').append(foodData);
+    
+ let carts = document.querySelectorAll('.fa');
+
+            //HIEI
+console.log(foods);
 
 for(let i=0; i< carts.length; i++) {
     carts[i].addEventListener('click', () => {
-        cartNumbers(foods[i]);
-        totalCost(foods[i]);
+console.log(i);
+console.log(foods[i]);
+cartNumbers(foods[i]);
+        totalCost(foods[i]);        
     });
 }
 
@@ -183,3 +205,12 @@ function deleteButtons() {
 
 onLoadCartNumbers();
 displayCart();
+
+    //idhr
+
+    });
+
+
+    
+});
+
