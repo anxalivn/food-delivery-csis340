@@ -19,6 +19,8 @@ function validate(){
             valid = true;
             sessionStorage.setItem('username',value.userName)
             sessionStorage.setItem('point',value.userPoint)
+            sessionStorage.setItem('userid',value.userID)
+
           }
         });
         if (valid == true){
