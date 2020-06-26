@@ -1,3 +1,4 @@
+
 var foods;
     $(document).ready(function () {
     $.getJSON('https://sfxz3aprr7.execute-api.us-east-1.amazonaws.com/Finish1/getmenuinformation', function (foods) {
@@ -114,16 +115,16 @@ function displayCart() {
         foodContainer.innerHTML = '';
         Object.values(cartItems).map( (item, index) => {
             foodContainer.innerHTML += 
-            `<div class="food"><ion-icon foodName="close-circle"></ion-icon><img src="Images/${item.foodImage}" />
+            `<div class="food"><ion-icon foodName="close-circle"></ion-icon><img src="./Images/${item.foodImage}" />
                 <span class="sm-hide">${item.foodName}</span>
             </div>
-            <div class="foodPrice sm-hide">$${item.foodPrice},00</div>
+            <div class="foodPrice sm-hide">$${item.foodPrice}</div>
             <div class="quantity">
                 <ion-icon class="decrease " foodName="arrow-dropleft-circle"></ion-icon>
                     <span>${item.inCart}</span>
                 <ion-icon class="increase" foodName="arrow-dropright-circle"></ion-icon>   
             </div>
-            <div class="total">$${item.inCart * item.foodPrice},00</div>`;
+            <div class="total">$${item.inCart * item.foodPrice}</div>`;
         });
 
         foodContainer.innerHTML += `
