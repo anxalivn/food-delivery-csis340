@@ -3,7 +3,13 @@
   <head>
     <title>Checkout Page</title>
     <link rel="stylesheet" href="style1.css"> <!--Styles-->
-    <meta name="viewpoint" content="width=device-width, initial-scale=1">
+    <script src="jquery-3.5.1.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link href="https://unpkg.com/ionicons@4.5.10-0/dist/css/ionicons.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap" rel="stylesheet">
+    <script type="module" src="https://unpkg.com/ionicons@5.0.0/dist/ionicons/ionicons.esm.js"></script>
 
     <script>
       function showCardInfo() {
@@ -44,6 +50,20 @@
           <div id="content">
               
 
+              <h2> Select a time for us to begin working on your order</h2>
+              <input type="radio" id="asap" name="selectTime" value="ASAP">
+              <label for="asap">ASAP</label>
+              <input type="radio" id="15" name="selectTime" value="15 Min">
+              <label for="15">15 Minutes</label>
+              <input type="radio" id="30" name="selectTime" value="30 Min">
+              <label for="30">30 Minutes</label>
+              <input type="radio" id="45" name="selectTime" value="45 Min">
+              <label for="45">45 Minutes</label>
+              <input type="radio" id="hour" name="selectTime" value="1 Hour">
+              <label for="hour">1 Hour</label>
+
+        
+        
             
     <div class="userinformation">
       <h3>Customer Information</h3>
@@ -52,6 +72,7 @@
     <input type="text" name="city" placeholder="Enter City">
     <input type="text" name="state" placeholder="Enter State">
     <input type="text" name="zipcode" placeholder="Enter Zipcode">
+
 
     <div class="option">
       <h2> Pay with Cash or Card</h2>
@@ -95,15 +116,33 @@
     
 
     </div>
+
+
+    <div class="container-foods">
+      <div class="food-header">
+          <h5 class="food-title">PRODUCT</h5>
+          <h5 class="foodPrice sm-hide">PRICE</h5>
+          <h5 class="quantity">QUANTITY</h5>
+          <h5 class="total">TOTAL</h5>
+      </div>
+      <div class="foods">
+  
+      </div>
+  </div>
     <input type="text" name="note" placeholder="Any special instruction for delivery driver">
     <br>
     <input type="submit" value="Submit Checkout">
     </div>
               
           </div>
+
+          
       </div>
+
+      
   </div>
       
+
 
     <script src="main.js"></script>
 
