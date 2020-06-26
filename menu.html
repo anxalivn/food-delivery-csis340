@@ -1,45 +1,66 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <script src="jquery-3.5.1.min.js"></script>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <title>Food Menu</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
     <link href="https://unpkg.com/ionicons@4.5.10-0/dist/css/ionicons.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap" rel="stylesheet">
-    <script type="module" src="https://unpkg.com/ionicons@5.0.0/dist/ionicons/ionicons.esm.js"></script>
-    <link rel="stylesheet" href="style1.css">
-    <title>Shopping Cart</title>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://kit.fontawesome.com/b6065dd748.js" crossorigin="anonymous"></script>
+    <script src="main.js"></script>
+    <script src="userInforScript.js"></script>
+    <script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>
+    <link rel="stylesheet" href="style1.css"> <!--Styles-->
+    <link rel="stylesheet" href="cart.css"> <!--Styles-->
+    <meta name="viewpoint" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
 </head>
+
 <body>
-     <div class="navTop1">
+    <!--Navigation Set-up-->
+    <div class="navTop1">
         <div class="navTopLef">
             <a href="menu.html">Menu</a>
             <a href="information.html">User</a>
             <a href="checkout.html">Check Out</a>
-            <li class="cart">
-                    <a href="cart.html">
-                        <ion-icon name="basket"></ion-icon>Cart<span>0</span>
-                    </a>
         </div>
         <div class="navTopCenterInPage">
             <img class="logo" src="Images/logo.png" alt="">
         </div>
+        <div class="cart-btn">
+            <span class="nav-icon">
+                <i class="fas fa-cart-plus"></i>
+
+            </span>
+            <div class="cart-items">0</div>
+        </div>
+             
+
     </div>
 
-    <div class="container-foods">
-        <div class="food-header">
-            <h5 class="food-title">Food</h5>
-            <h5 class="foodPrice sm-hide">Price</h5>
-            <h5 class="quantity">Quantity</h5>
-            <h5 class="total">Total</h5>
-        </div>
-        <div class="foods">
 
+    <div class="content">
+        <div class="header">
+            <h1>Food Menu</h1>
+            </div>
+
+           <div class="hoverTable">
+            <table class="hoverTable" id="foodMenu">
+                <tr>
+                    <th>Food Name</th>
+                    <th>Food Description</th>
+                    <th>Food Price</th>
+                    <th>Food Image </th>
+                </tr>
+            
+            </table>
         </div>
+        </div>
+
     </div>
 
-    <script src="main.js"></script>
+    
+  
 </body>
 </html>
