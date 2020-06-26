@@ -281,42 +281,31 @@ div#content {
     overflow: hidden;
 }
 
-.add.cart {
-  margin-right: 0.5rem;
-}
-
-.image:hover .cart1,
-.image:hover .cart2,
-.image:hover .cart3,
-.image:hover .cart4 {
-    bottom: 50px;
-    opacity: 1;
-    padding: 10px;
-    text-decoration: none;
-}
-
 /* ----------------- CART PAGE --------------- */
+.add-cart {
+    position: absolute;
+    width: 100%;
+    background-color: darkgrey;
+    transition: all 0.3s ease-in-out;
+    opacity: 0;
+    cursor: pointer;
+    text-align: center;
+}
 
 .container-foods {
     max-width: 650px;
     justify-content: space-around;
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    margin: auto;
+    margin: 0 auto;
+    margin-top: 50px;
 }
 
-    .container-foods ion-icon {
-        font-size: 25px;
-        color: blue;
-        margin-left: 10px;
-        margin-right: 10px;
-        cursor: pointer;
-    }
+.container-foods ion-icon {
+    font-size: 25px;
+    color: blue;
+    margin-left: 10px;
+    margin-right: 10px;
+    cursor: pointer;
+}
 
 .food-header {
     width: 100%;
@@ -328,13 +317,10 @@ div#content {
 }
 
 .food-title {
-    width: 35%;
-    border-bottom: 1px solid lightgray;
-    display: flex;
-    align-items: center;
+    width: 45%;
 }
 
-.foodPrice {
+.price {
     width: 15%;
     border-bottom: 1px solid lightgray;
     display: flex;
@@ -364,19 +350,20 @@ div#content {
     border-bottom: 1px solid lightgray;
 }
 
-    .food ion-icon {
-        cursor: pointer;
-    }
+.food ion-icon {
+    cursor: pointer;
+    
+}
 
-.food {
+.foods {
     width: 100%;
     display: flex;
     flex-wrap: wrap;
 }
 
-    .food img {
-        width: 75px;
-    }
+.foods img {
+    width: 75px;
+}
 
 .basketTotalContainer {
     display: flex;
@@ -397,14 +384,14 @@ div#content {
     nav h2 {
         width: 100%;
         text-align: center;
-        margin-bottom: 10px;
+        margin-bottom: 10px;;
     }
 
     .sm-hide {
-        display: none;
+        display: none;;
     }
 
-    .food,
+    .foods,
     .food-header {
         justify-content: center;
     }
