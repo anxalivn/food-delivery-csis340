@@ -45,6 +45,7 @@ function getChange() {
         "newZipcode": newZipcode
     }
 
+   if(passStatus == true || addressStatus == true){
     $.ajax({
         url: Url,
         type: 'POST',
@@ -57,5 +58,9 @@ function getChange() {
             alert("New infomraitons have been updated");
         }
     });
+   }
+   else{
+    alert("Can't update inormation. Please fill out completely your new address or make sure your new passowrd match with the cofirm password");
+   }
 
 }
