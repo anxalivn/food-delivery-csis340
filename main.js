@@ -130,7 +130,7 @@ function displayCart() {
         foodContainer.innerHTML += `
             <div class="basketTotalContainer">
                 <h4 class="basketTotalTitle">Basket Total</h4>
-                <h4 class="basketTotal">$${cart},00</h4>
+                <h4 class="basketTotal">$${cart}</h4>
             </div>`
 
         deleteButtons();
