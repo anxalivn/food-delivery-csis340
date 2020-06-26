@@ -114,7 +114,7 @@ function displayCart() {
         foodContainer.innerHTML = '';
         Object.values(cartItems).map( (item, index) => {
             foodContainer.innerHTML += 
-            `<div class="food"><ion-icon foodName="close-circle"></ion-icon><img src="./images/${item.foodImage}" />
+            `<div class="food"><ion-icon foodName="close-circle"></ion-icon><img src="Images/${item.foodImage}" />
                 <span class="sm-hide">${item.foodName}</span>
             </div>
             <div class="foodPrice sm-hide">$${item.foodPrice},00</div>
