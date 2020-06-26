@@ -45,22 +45,23 @@ function getChange() {
         "newZipcode": newZipcode
     }
 
-   if(passStatus == true || addressStatus == true){
-    $.ajax({
-        url: Url,
-        type: 'POST',
-        data: JSON.stringify(data),
-        contentType: 'application/json; charset=utf-8',
-        success: function () {
-            alert("New infomraitons have been updated");
-        },
-        error: function () {
-            alert("New infomraitons have been updated");
-        }
-    });
-   }
-   else{
-    alert("Can't update inormation. Please fill out completely your new address or make sure your new passowrd match with the cofirm password");
-   }
+    if (passStatus == true || addressStatus == true) {
+        $.ajax({
+            url: Url,
+            type: 'POST',
+            data: JSON.stringify(data),
+            contentType: 'application/json; charset=utf-8',
+            success: function () {
+                alert("New infomraitons have been updated");
+            },
+            error: function () {
+                alert("New infomraitons have been updated");
+            }
+        });
+    }
+    else {
+        alert("Can't update inormation. Please fill out completely your new address or make sure your new passowrd match with the cofirm password");
+    }
 
 }
+
