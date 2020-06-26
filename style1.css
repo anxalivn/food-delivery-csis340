@@ -274,14 +274,6 @@ div#content {
     font-size: 1.5rem;
 }
 
-.container-foods {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    margin-top: 50px;
-    padding-bottom: 100px;
-}
-
 .image {
     margin-right: 20px;
     margin-left: 20px;
