@@ -284,7 +284,6 @@ div#content {
 
 /* ----------------- CART PAGE --------------- */
 .add-cart {
-    position: absolute;
     width: 100%;
     background-color: darkgrey;
     transition: all 0.3s ease-in-out;
@@ -294,6 +293,9 @@ div#content {
 }
 
 .container-foods {
+    position:absolute;
+    top:10%;
+    left:1%;
     max-width: 650px;
     justify-content: space-around;
     margin: 0 auto;
