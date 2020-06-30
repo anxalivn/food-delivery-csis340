@@ -292,7 +292,7 @@ div#content {
     text-align: center;
 }
 
-.food-container {
+.foodContainer {
     position:absolute;
     top:10%;
     left:1%;
@@ -302,7 +302,7 @@ div#content {
     margin-top: 50px;
 }
 
-.food-container ion-icon {
+.foodContainer ion-icon {
         font-size: 25px;
         color: blue;
         margin-left: 10px;
