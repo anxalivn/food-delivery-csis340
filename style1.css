@@ -425,8 +425,7 @@ div#content {
     .basketTotalContainer {
         padding-right: 8%;
     }
-}
-.myInput {
+    .myInput {
   background-color:#2b1c17;
    color:white;
   width: 100%;
@@ -435,3 +434,5 @@ div#content {
   border: 1px solid #ddd; 
   margin-bottom: 12px; 
 }
+}
+
