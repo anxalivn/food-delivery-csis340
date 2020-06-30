@@ -292,7 +292,7 @@ div#content {
     text-align: center;
 }
 
-.foodContainer {
+.food-container {
     position:absolute;
     top:10%;
     left:1%;
@@ -302,13 +302,12 @@ div#content {
     margin-top: 50px;
 }
 
-    .foodContainer ion-icon {
+.food-container ion-icon {
         font-size: 25px;
         color: blue;
         margin-left: 10px;
         margin-right: 10px;
-        cursor: pointer;
-    }
+}
 
 .food-header {
     width: 100%;
@@ -353,9 +352,9 @@ div#content {
     border-bottom: 1px solid lightgray;
 }
 
-    .food ion-icon {
+.food ion-icon {
         cursor: pointer;
-    }
+}
 
 .foods {
     width: 100%;
@@ -393,7 +392,7 @@ div#content {
         display: none;
     }
 
-    .foods,
+    .food,
     .food-header {
         justify-content: center;
     }
