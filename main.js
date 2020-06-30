@@ -111,7 +111,7 @@ function displayCart() {
 
     let foodContainer = document.querySelector('.foods');
     
-    if( cartItems && foodCfoodContainerntainer ) {
+    if( cartItems && foodContainer ) {
         foodContainer.innerHTML = '';
         Object.values(cartItems).map( (item, index) => {
             foodContainer.innerHTML += 
