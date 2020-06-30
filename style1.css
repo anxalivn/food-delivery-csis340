@@ -427,9 +427,8 @@ div#content {
     }
 }
 .myInput {
-  background-image: url('Images/search.png');
-  background-position: 10px 10px;
-  background-repeat: no-repeat;
+  background-color:#2b1c17;
+   color:white;
   width: 100%;
   font-size: 16px; 
   padding: 12px 20px 12px 40px; 
