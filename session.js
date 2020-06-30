@@ -10,26 +10,89 @@ window.onload = function () {
         var foodData = '';
         $.each(orders, function (key, value) {
             if (value.accountID == id) {
-                var time = Unix_timestamp(value.orderID,value.timeDeliver);
+                var time = Unix_timestamp(value.orderID, value.timeDeliver);
                 foodData += '<tr>';
-                foodData += '<td>' + value.orderID + '</td>';
+                foodData += '<td>' + value.orderID + '</br><input type="submit" value="Cancel Order" onclick="cancelOrder();">' + '</td>';
                 foodData += '<td>' + value.foodList + '</td>';
                 foodData += '<td>' + value.paymentMethod + '</td>';
                 foodData += '<td>' + value.cusNote + '</td>';
                 foodData += '<td>' + value.totalPrice + '</td>';
                 foodData += '<td>' + time + '</td>';
                 foodData += '</tr>';
+
             }
         });
         $('#orderFoods').append(foodData);
     })
 }
 
-function Unix_timestamp(t,timeDeliver) {
-    var timeAdd =  new Date(t);
-    timeAdd.setTime(timeAdd.getTime() + timeDeliver*60*1000);
-    var date = 	Math.floor(new Date(timeAdd).getTime()/1000.0);
-    var dt = new Date(date*1000); 
+function cancelOrder() {
+    var table = document.getElementById("orderFoods");
+    if (table != null) {
+        for (var i = 1; i < table.rows.length; i++) {
+            for (var j = 0; j < table.rows[i].cells.length; j++)
+                table.rows[i].cells[j].onclick = function () {
+                    tableText(this);
+                };
+        }
+    }
+}
+
+function tableText(tableCell) {
+    var n = tableCell.innerHTML.indexOf("<");
+    var numberOrder = tableCell.innerHTML.slice(0, n);
+    const diffTime = Math.abs(parseInt(numberOrder) - new Date());
+
+    let timeCheck = Math.floor(diffTime / 60000)
+    if (timeCheck > 10) {
+        alert("Too late to cancel this order");
+    }
+    else {
+        const Url = 'https://sfxz3aprr7.execute-api.us-east-1.amazonaws.com/Finish1/changeuserinfor';
+        const data =
+        {
+            "numberOrder": numberOrder,
+            "orderStatus": true
+        }
+
+        $.ajax({
+            url: Url,
+            type: 'POST',
+            data: JSON.stringify(data),
+            contentType: 'application/json; charset=utf-8',
+            success: function () {
+                alert("Order has been canceled");
+            },
+            error: function () {
+                alert("Order has been canceled");
+            }
+        });
+
+        $.getJSON(orderURl, function (orders) {
+            var foodData = '';
+            $.each(orders, function (key, value) {
+                if (value.accountID == id) {
+                    var time = Unix_timestamp(value.orderID, value.timeDeliver);
+                    foodData += '<tr>';
+                    foodData += '<td>' + value.orderID + '</br><input type="submit" value="Cancel Order" onclick="cancelOrder();">' + '</td>';
+                    foodData += '<td>' + value.foodList + '</td>';
+                    foodData += '<td>' + value.paymentMethod + '</td>';
+                    foodData += '<td>' + value.cusNote + '</td>';
+                    foodData += '<td>' + value.totalPrice + '</td>';
+                    foodData += '<td>' + time + '</td>';
+                    foodData += '</tr>';
+    
+                }
+            });
+            $('#orderFoods').append(foodData);
+        })
+    }
+}
+function Unix_timestamp(t, timeDeliver) {
+    var timeAdd = new Date(t);
+    timeAdd.setTime(timeAdd.getTime() + timeDeliver * 60 * 1000);
+    var date = Math.floor(new Date(timeAdd).getTime() / 1000.0);
+    var dt = new Date(date * 1000);
     var hr = dt.getHours();
     var m = "0" + dt.getMinutes();
     var s = "0" + dt.getSeconds();
