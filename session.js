@@ -2,15 +2,44 @@ let username = sessionStorage.getItem("username");
 let point = sessionStorage.getItem("point");
 let id = sessionStorage.getItem("userid");
 
+const orderURl = "https://sfxz3aprr7.execute-api.us-east-1.amazonaws.com/Finish1/GetOrderHistory";
 
 window.onload = function () {
     getPoint();
-    function getPoint() {
-        document.getElementById('userInfo').innerHTML = 'Hello ' + username;
-        document.getElementById('userPoint').innerHTML = 'You point is: ' + point;
-    };
+    $.getJSON(orderURl, function (orders) {
+        var foodData = '';
+        $.each(orders, function (key, value) {
+            if (value.accountID == id) {
+                var time = Unix_timestamp(value.orderID,value.timeDeliver);
+                foodData += '<tr>';
+                foodData += '<td>' + value.orderID + '</td>';
+                foodData += '<td>' + value.foodList + '</td>';
+                foodData += '<td>' + value.paymentMethod + '</td>';
+                foodData += '<td>' + value.cusNote + '</td>';
+                foodData += '<td>' + value.totalPrice + '</td>';
+                foodData += '<td>' + time + '</td>';
+                foodData += '</tr>';
+            }
+        });
+        $('#orderFoods').append(foodData);
+    })
 }
 
+function Unix_timestamp(t,timeDeliver) {
+    var timeAdd =  new Date(t);
+    timeAdd.setTime(timeAdd.getTime() + timeDeliver*60*1000);
+    var date = 	Math.floor(new Date(timeAdd).getTime()/1000.0);
+    var dt = new Date(date*1000); 
+    var hr = dt.getHours();
+    var m = "0" + dt.getMinutes();
+    var s = "0" + dt.getSeconds();
+    return hr + ':' + m.substr(-2) + ':' + s.substr(-2);
+}
+
+function getPoint() {
+    document.getElementById('userInfo').innerHTML = 'Hello ' + username;
+    document.getElementById('userPoint').innerHTML = 'You point is: ' + point;
+};
 
 function getChange() {
     const Url = 'https://sfxz3aprr7.execute-api.us-east-1.amazonaws.com/Finish1/changeuserinfor';
