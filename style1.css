@@ -278,7 +278,7 @@ div#content {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    margin: auto;
+    margin-top: 50px;
     padding-bottom: 100px;
 }
 
@@ -336,10 +336,7 @@ div#content {
 }
 
 .food-title {
-    width: 15%;
-    border-bottom: 1px solid lightgray;
-    display: flex;
-    align-items: center;
+    width: 45%;
 }
 
 .foodPrice {
