@@ -343,7 +343,7 @@ div#content {
     align-items: center;
 }
 
-.food {
+.foods {
     width: 45%;
     display: flex;
     justify-content: space-around;
@@ -352,7 +352,7 @@ div#content {
     border-bottom: 1px solid lightgray;
 }
 
-.food ion-icon {
+.foods ion-icon {
         cursor: pointer;
 }
 
