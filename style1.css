@@ -281,6 +281,25 @@ div#content {
     position: relative;
     overflow: hidden;
 }
+li a {
+    padding: 5px;
+    background-color: #fff;
+    text-decoration: none;;
+}
+
+.cart ion-icon {
+   vertical-align: bottom;
+   font-size: 20px;
+   padding-right: 5px;
+}
+
+.cart a {
+    background-color: royalblue;
+    color: #fff;
+    cursor: pointer;
+    text-decoration: none;
+}
+
 .container,
 .container-foods {
     display: flex;
@@ -307,10 +326,7 @@ div#content {
     text-align: center;
 }
 
-.image:hover .cart1,
-.image:hover .cart2,
-.image:hover .cart3,
-.image:hover .cart4 {
+.image:hover .cart1 {
     bottom: 50px;
     opacity: 1;
     padding: 10px;
@@ -326,7 +342,7 @@ div#content {
     margin-top: 50px;
 }
 
-.container-food ion-icon {
+.container-foods ion-icon {
     font-size: 25px;
     color: blue;
     margin-left: 10px;
