@@ -1,4 +1,3 @@
-
 @import url("https://fonts.googleapis.com/css?family=Lato:400,700");
 
 * {
@@ -275,38 +274,12 @@ div#content {
     font-size: 1.5rem;
 }
 
-.image {
-    margin-right: 20px;
-    margin-left: 20px;
-    position: relative;
-    overflow: hidden;
-}
-li a {
-    padding: 5px;
-    background-color: #fff;
-    text-decoration: none;;
-}
-
-.cart ion-icon {
-   vertical-align: bottom;
-   font-size: 20px;
-   padding-right: 5px;
-}
-
-.cart a {
-    background-color: royalblue;
-    color: #fff;
-    cursor: pointer;
-    text-decoration: none;
-}
-
-.container,
 .container-foods {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
     margin-top: 50px;
-    padding-bottom: 100px;;
+    padding-bottom: 100px;
 }
 
 .image {
@@ -316,17 +289,14 @@ li a {
     overflow: hidden;
 }
 
-.add-cart {
-    position: absolute;
-    width: 100%;
-    background-color: darkgrey;
-    transition: all 0.3s ease-in-out;
-    opacity: 0;
-    cursor: pointer;
-    text-align: center;
+.fa-shopping-cart {
+  margin-right: 0.5rem;
 }
 
-.image:hover .cart1 {
+.image:hover .cart1,
+.image:hover .cart2,
+.image:hover .cart3,
+.image:hover .cart4 {
     bottom: 50px;
     opacity: 1;
     padding: 10px;
@@ -338,17 +308,23 @@ li a {
 .container-foods {
     max-width: 650px;
     justify-content: space-around;
-    margin: 0 auto;
-    margin-top: 50px;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
 }
 
-.container-foods ion-icon {
-    font-size: 25px;
-    color: blue;
-    margin-left: 10px;
-    margin-right: 10px;
-    cursor: pointer;
-}
+    .container-foods ion-icon {
+        font-size: 25px;
+        color: blue;
+        margin-left: 10px;
+        margin-right: 10px;
+        cursor: pointer;
+    }
 
 .food-header {
     width: 100%;
@@ -363,7 +339,7 @@ li a {
     width: 45%;
 }
 
-.price {
+.foodPrice {
     width: 15%;
     border-bottom: 1px solid lightgray;
     display: flex;
@@ -393,20 +369,19 @@ li a {
     border-bottom: 1px solid lightgray;
 }
 
-.food ion-icon {
-    cursor: pointer;
-    
-}
+    .food ion-icon {
+        cursor: pointer;
+    }
 
-.foods {
+.food {
     width: 100%;
     display: flex;
     flex-wrap: wrap;
 }
 
-.foods img {
-    width: 75px;
-}
+    .food img {
+        width: 75px;
+    }
 
 .basketTotalContainer {
     display: flex;
@@ -427,14 +402,14 @@ li a {
     nav h2 {
         width: 100%;
         text-align: center;
-        margin-bottom: 10px;;
+        margin-bottom: 10px;
     }
 
     .sm-hide {
-        display: none;;
+        display: none;
     }
 
-    .foods,
+    .food,
     .food-header {
         justify-content: center;
     }
