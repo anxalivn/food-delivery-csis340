@@ -336,7 +336,10 @@ div#content {
 }
 
 .food-title {
-    width: 45%;
+    width: 15%;
+    border-bottom: 1px solid lightgray;
+    display: flex;
+    align-items: center;
 }
 
 .foodPrice {
