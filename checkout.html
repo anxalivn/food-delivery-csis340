@@ -10,7 +10,7 @@
     <link href="https://unpkg.com/ionicons@4.5.10-0/dist/css/ionicons.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap" rel="stylesheet">
     <script type="module" src="https://unpkg.com/ionicons@5.0.0/dist/ionicons/ionicons.esm.js"></script>
-
+    <script src="checkout.js"></script>
     <script>
       function showCardInfo() {
         if (document.getElementById('paymentOption').checked) {
@@ -21,8 +21,6 @@
 
 
       }
-
-
     </script>
   </head>
 
@@ -44,12 +42,9 @@
         <button type="submit" class="login-btn" onclick="window.location.href='index.html'">Login Out</button>
       </div>     
     </div>
-
     <div class="content">
       <div id="wrapper">
           <div id="content">
-              
-
               <h2> Select a time for us to begin working on your order</h2>
               <input type="radio" id="asap" name="selectTime" value="ASAP">
               <label for="asap">ASAP</label>
@@ -61,10 +56,7 @@
               <label for="45">45 Minutes</label>
               <input type="radio" id="hour" name="selectTime" value="1 Hour">
               <label for="hour">1 Hour</label>
-
-        
-        
-            
+    
     <div class="userinformation">
       <h3>Customer Information</h3>
     <input type="text"name="name" placeholder="First Last">
@@ -118,33 +110,20 @@
     </div>
 
 
-    <div class="container-foods">
+    <div id="cartContent" class="container-foods">
         <div class="food-header">
-            <h5 class="food-title">PRODUCT</h5>
-            <h5 class="foodPrice sm-hide">PRICE</h5>
-            <h5 class="quantity">QUANTITY</h5>
-            <h5 class="total">TOTAL</h5>
-        </div>
-        <div class="foods">
-
+            <h3 class="food-title">PRODUCT</h3>
+            <h3 class="foodPrice sm-hide">PRICE</h3>
         </div>
     </div>
     <input type="text" name="note" placeholder="Any special instruction for delivery driver">
     <br>
-    <input type="submit" value="Submit Checkout">
+    <div id="totalPrice">
     </div>
-              
-          </div>
-
-          
-      </div>
-
-      
+    <input type="submit" value="Submit Checkout">
+    </div>     
   </div>
-      
-
-
-    <script src="main.js"></script>
+    
 
   </body>
 </html>
