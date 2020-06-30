@@ -42,7 +42,6 @@ function myFunction() {
   table = document.getElementById("foodMenu");
   tr = table.getElementsByTagName("tr");
 
-  // Loop through all table rows, and hide those who don't match the search query
   for (i = 0; i < tr.length; i++) {
     td = tr[i].getElementsByTagName("td")[1];
     if (td) {
@@ -55,6 +54,7 @@ function myFunction() {
     }
   }
 }
+
 function addFood(food){
     jsons.push(food);
     console.log(jsons)
