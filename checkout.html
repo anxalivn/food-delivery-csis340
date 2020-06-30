@@ -59,11 +59,11 @@
     
     <div class="userinformation">
       <h3>Customer Information</h3>
-    <input type="text"name="name" placeholder="First Last">
-    <input type="text"name="address" placeholder="Enter Address">
-    <input type="text" name="city" placeholder="Enter City">
-    <input type="text" name="state" placeholder="Enter State">
-    <input type="text" name="zipcode" placeholder="Enter Zipcode">
+    <input id="cusName" type="text"name="name" placeholder="First Last">
+    <input id="cusAddr" type="text"name="address" placeholder="Enter Address">
+    <input id="cusCity" type="text" name="city" placeholder="Enter City">
+    <input id="cusState" type="text" name="state" placeholder="Enter State">
+    <input id="cusZipcode" type="text" name="zipcode" placeholder="Enter Zipcode">
 
 
     <div class="option">
@@ -116,11 +116,11 @@
             <h3 class="foodPrice sm-hide">PRICE</h3>
         </div>
     </div>
-    <input type="text" name="note" placeholder="Any special instruction for delivery driver">
+    <input type="text" id="deliveryNote" name="note" placeholder="Any special instruction for delivery driver">
     <br>
     <div id="totalPrice">
     </div>
-    <input type="submit" value="Submit Checkout">
+    <input type="submit" value="Submit Checkout" onclick="checkOut();">
     </div>     
   </div>
     
