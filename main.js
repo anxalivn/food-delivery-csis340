@@ -109,12 +109,12 @@ function displayCart() {
     let cart = localStorage.getItem("totalCost");
     cart = parseInt(cart);
 
-    let container-foods = document.querySelector('.foods');
+    let foodContainer = document.querySelector('.foods');
     
-    if( cartItems && container-foods ) {
-        container-foods.innerHTML = '';
+    if( cartItems && foodCfoodContainerntainer ) {
+        foodContainer.innerHTML = '';
         Object.values(cartItems).map( (item, index) => {
-            container-foods.innerHTML += 
+            foodContainer.innerHTML += 
             `<div class="food"><ion-icon foodName="close-circle"></ion-icon><img src="./Images/${item.foodImage}" />
                 <span class="sm-hide">${item.foodName}</span>
             </div>
@@ -127,7 +127,7 @@ function displayCart() {
             <div class="total">$${item.inCart * item.foodPrice}</div>`;
         });
 
-        container-foods.innerHTML += `
+        foodContainer.innerHTML += `
             <div class="basketTotalContainer">
                 <h4 class="basketTotalTitle">Basket Total</h4>
                 <h4 class="basketTotal">$${cart}</h4>
