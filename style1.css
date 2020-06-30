@@ -319,7 +319,7 @@ div#content {
 
 /* ----------------- CART PAGE --------------- */
 
-.food-products {
+.container-foods {
     max-width: 650px;
     justify-content: space-around;
     margin: 0 auto;
