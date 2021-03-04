@@ -88,11 +88,11 @@ img.logo {
 
 /*Slider*/
 
-#slider {
-    position: fixed;
+slider {
+    position: absolute;
 }
 
-    #slider img {
+    slider img {
         max-width: 100%;
         max-height: 100%;
         height: 100%;
