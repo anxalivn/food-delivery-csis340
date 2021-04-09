@@ -97,7 +97,7 @@ slider {
 }
 
 .cycle-slideshow {
-    position: relative;
+    position: absolute;
 }
 
 .login-btn {
